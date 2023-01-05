@@ -1,0 +1,222 @@
+div.postContainer {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: min-content min-content min-content;
+
+    // Informacion del usuario, seccion de arriba
+    div.userInfo {
+        display: grid;
+        grid-template-columns: min-content min-content auto min-content;
+        grid-template-rows: min-content;
+        align-items: center;
+        gap: .7rem;
+        padding: .7rem 1rem .7rem .8rem;
+
+        // Perfil
+        img {
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        // Nombre de usuario
+        h4 {
+            text-transform: capitalize;
+            color: #222;
+        }
+
+        // Fecha
+        span {
+            font-size: 0.9rem;
+            opacity: .6;
+            font-family: sans-serif;
+            white-space: nowrap;
+        }
+    }
+
+    // Publicacion
+    img.postImage {
+        width: 100%;
+        aspect-ratio: 1/1;
+        height: auto;
+    }
+
+    // Contenedor de la seccion de abajo
+    div.actions {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: min-content min-content;
+
+        // Botones like y comentario
+        div.buttons {
+            display: grid;
+            grid-template-columns: min-content min-content;
+            grid-template-rows: min-content;
+            padding: .5rem .6rem .4rem .8rem;
+            align-items: center;
+            gap: .6rem;
+
+            img {
+                cursor: pointer;
+            }
+        }
+
+        // Texto de la publicacion
+        p {
+            padding: 0 .8rem .3rem .8rem;
+            word-wrap: break-word;
+            word-break: keep-all;
+            color: #222;
+            
+            // Nombre de usuario
+            b {
+                text-transform: capitalize;
+                color: #222;
+            }
+        }
+
+        // Indicador de comentarios, abajo de todo
+        span.comments {
+            padding: 0 .8rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: #555;
+        }
+
+    }
+
+    // Contenedor de la seccion comentarios
+    div.comments {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: #fff;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: min-content auto min-content;
+
+        // Seccion de arriba
+        div.nav {
+            display: grid;
+            grid-template-columns: min-content min-content;
+            align-items: center;
+            justify-items: center;
+            padding: .8rem 1.2rem;
+            gap: 1.5rem;
+            border-bottom: 1px solid lightgray;
+
+            // Volver atras
+            img {
+                cursor: pointer;
+                object-fit: cover;
+            }
+
+            span {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #222;
+            }
+        }
+
+        // Contenedor de los comentarios
+        div.list {
+            display: grid;
+            grid-template-columns: auto;
+            grid-auto-rows: min-content;
+            padding: 1rem;
+            gap: 1.2rem;
+            overflow-y: auto;
+
+            // Contenedor del comentario
+            div {
+                display: grid;
+                grid-template-columns: min-content auto;
+                align-items: flex-start;
+                gap: .8rem;
+
+                img {
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+
+                // Contenedor del contenido
+                div {
+                    display: grid;
+                    grid-template-columns: auto;
+                    grid-template-rows: min-content min-content;
+                    gap: .1rem;
+
+                    // Nombre de usuario
+                    span {
+                        color: #222;
+                        text-transform: capitalize;
+                        font-weight: bold;
+                        font-size: 0.9rem;
+                        cursor: pointer;
+                    }
+
+                    // Contenido del comentario
+                    p {
+                        word-wrap: break-word;
+                        word-break: keep-all;
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+
+        }
+        
+        // Seccion que reemplaza los comentarios cuando no los hay
+        div.noComments {
+            display: grid;
+            grid-template-columns: auto;
+            grid-template-rows: min-content min-content;
+            align-content: center;
+            justify-items: center;
+            gap: 0.5rem;
+            color: #222;
+
+            span {
+                text-align: center;
+                font-family: sans-serif;
+            }
+
+            span:nth-child(1) {
+                font-size: 1.4rem;
+                font-weight: bold;
+            }
+        }
+
+        // Seccion de nuevo comentario, abajo de todo
+        form.comment {
+            display: grid;
+            grid-template-columns: min-content auto min-content;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            gap: 1rem;
+            border-top: 1px solid lightgray;
+            
+            & * {
+                font-family: sans-serif;
+            }
+
+            img {
+                object-fit: cover;
+                border-radius: 50%;
+            }
+
+            input {
+                font-size: 0.9rem;
+                border: none;
+            }
+
+            input[type="submit"] {
+                font-weight: bold;
+                background: none;
+                color: #4681f4;
+            }
+        }
+    }
+}
