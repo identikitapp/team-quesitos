@@ -33,10 +33,15 @@ div.profileContainer {
             gap: 1rem;
 
             @include tablet {
-                gap: 1.6rem;
+                gap: 1.6rem 1.2rem;
                 padding: .6rem 3rem 0 3rem;
                 grid-template-columns: 130px auto min-content;
                 align-items: center;
+            }
+
+            @include desktop {
+                gap: 2rem 1.2rem;
+                padding: .6rem 6rem 0 6rem;
             }
 
             // Imagen de perfil
@@ -54,6 +59,11 @@ div.profileContainer {
                     height: auto;
                     left: 3rem;
                     transform: translateY(-5.2rem);
+                }
+
+                @include desktop {
+                    left: 6rem;
+                    transform: translateY(-5.6rem);
                 }
             }
 
@@ -160,6 +170,11 @@ div.profileContainer {
                     font-size: 1.2rem;
                     margin-top: -0.4rem;
                 }
+
+                @include desktop {
+                    font-size: 1.4rem;
+                    margin-top: -.8rem;
+                }
             }
         }
     }
@@ -175,6 +190,12 @@ div.profileContainer {
         @include tablet {
             grid-template-columns: 1fr 1fr 1fr 1fr;
             padding: 1rem 3rem 2rem 3rem;
+            gap: 0.2rem;
+        }
+
+        @include desktop {
+            padding: 1rem 6rem 2rem 6rem;
+            gap: 0.3rem;
         }
 
         img {
@@ -211,6 +232,22 @@ div.profileContainer {
         }
     }
 
+    // Fondo de seePublications (para poder mostrar un box-shadow)
+    div.seeBackground {
+        display: none;
+
+        @include tablet {
+            display: block;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background-color: #fff;
+            z-index: 1;
+        }
+    }
+
     // Seccion de publicaciones tras acceder a una
     div.seePublications {
         position: fixed;
@@ -225,7 +262,14 @@ div.profileContainer {
         z-index: 1;
 
         @include tablet {
-            padding: 0 9rem;
+            left: 6rem;
+            right: 6rem;
+            box-shadow: 0 0 12px 1px rgba(34, 34, 34, 0.089);
+        }
+
+        @include desktop {
+            left: 12rem;
+            right: 12rem;
         }
 
         div.nav {

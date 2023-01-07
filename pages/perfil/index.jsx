@@ -76,6 +76,9 @@ const Profile = () => {
                 <span>No tienes ninguna publicación</span>
                 <span>Haz una ahora</span>
             </div>}
+
+            {seePost[0] && <div className="seeBackground"></div>}
+
             {seePost[0] && <div className="seePublications">
                 <div className="nav">
                     <Image onClick={()=> onSeePostHandler(null, null)} width={30} height={30} src={arrowImg} alt="Volver atras" />

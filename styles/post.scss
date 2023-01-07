@@ -97,6 +97,16 @@ div.postContainer {
         grid-template-columns: auto;
         grid-template-rows: min-content auto min-content;
 
+        @include tablet {
+            left: 6rem;
+            right: 6rem;
+        }
+
+        @include desktop {
+            left: 12rem;
+            right: 12rem;
+        }
+
         // Seccion de arriba
         div.nav {
             display: grid;
