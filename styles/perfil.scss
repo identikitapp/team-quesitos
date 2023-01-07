@@ -1,6 +1,11 @@
+// Contenedor de la page
 div.profileContainer {
-    background-color: #fff;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: min-content min-content auto;
+    height: 100vh;
 
+    // Imagen de fondo
     div.background {
         width: 100%;
         height: 140px;
@@ -8,11 +13,11 @@ div.profileContainer {
         background-size: cover;
 
         @include tablet {
-            grid-column: 1/3;
             height: 180px;
         }
     }
 
+    // Seccion de usuario
     div.header {
         display: grid;
         grid-template-columns: auto;
@@ -20,20 +25,21 @@ div.profileContainer {
         position: relative;
         z-index: 1;
 
-        @include tablet {
-            height: 180px;
-        }
-
+        // Informacion del usuario
         div.user {
             display: grid;
-            grid-template-columns: min-content auto;
-            padding: .6rem 1.5rem 1.2rem 1.5rem;
-            gap: 1.4rem 0;
+            grid-template-columns: 120px auto;
+            padding: .6rem 1.5rem 0 1.5rem;
+            gap: 1rem;
 
-            span.separador {
-                width: calc(120px + 1rem);
+            @include tablet {
+                gap: 1.6rem;
+                padding: .6rem 3rem 0 3rem;
+                grid-template-columns: 130px auto min-content;
+                align-items: center;
             }
 
+            // Imagen de perfil
             img {
                 position: absolute;
                 object-fit: cover;
@@ -42,8 +48,16 @@ div.profileContainer {
                 border-radius: 6px;
                 background-color: #fff;
                 box-shadow: 0 0 8px 1px rgba(34, 34, 34, 0.089);
+
+                @include tablet {
+                    width: 130px;
+                    height: auto;
+                    left: 3rem;
+                    transform: translateY(-5.2rem);
+                }
             }
 
+            // Nombre de usuario y nombres
             div.info {
                 width: 100%;
                 display: flex;
@@ -58,6 +72,10 @@ div.profileContainer {
 
                 h3 {
                     font-size: 1.1rem;
+
+                    @include tablet {
+                        font-size: 1.2rem;
+                    }
                 }
 
                 span {
@@ -66,6 +84,7 @@ div.profileContainer {
 
             }
 
+            // Publicaciones, seguidos y seguidores
             div.stats {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
@@ -75,6 +94,7 @@ div.profileContainer {
 
                 @include tablet {
                     grid-template-columns: min-content min-content min-content;
+                    gap: 2rem;
                 }
     
                 span {
@@ -91,9 +111,8 @@ div.profileContainer {
                     @include tablet {
                         flex-direction: row;
                         align-items: center;
-                        text-transform: lowercase;
                         gap: 0.4rem;
-                        font-size: 1.1em;
+                        font-size: 1.2rem;
                     }
     
                     b {
@@ -101,34 +120,61 @@ div.profileContainer {
                         font-size: 1.1rem;
 
                         @include tablet {
+                            font-size: 1.2rem;
                             font-family: sans-serif;
                         }
                     }
                 }
             }
 
+            // Boton editar perfil
             button.editProfile {
-                padding: 0.4rem;
+                padding: 0.3rem;
                 border: none;
                 border-radius: 4px;
-                background-color: lightgray;
-                color: #666;
+                background-color: rgb(230, 230, 230);
+                color: #111;
                 font-weight: bold;
                 font-size: 1rem;
                 grid-column: 1/3;
+                white-space: nowrap;
+
+                @include tablet {
+                    grid-column: 3/4;
+                    grid-row: 1/2;
+                    padding: 0.3rem 2rem;
+                }
+            }
+
+            // Titulo de la seccion publicaciones
+            span.publicationsTitle {
+                grid-column: 1/3;
+                font-size: 1.1rem;
+                font-weight: 600;
+                color: #111;
+                padding-bottom: 0.4rem;;
+                border-bottom: 2px solid rgb(230, 230, 230);
+
+                @include tablet {
+                    grid-column: 1/4;
+                    font-size: 1.2rem;
+                    margin-top: -0.4rem;
+                }
             }
         }
     }
 
+    // Lista de publicaciones
     div.publications {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-auto-rows: min-content;
         gap: .1rem;
-        padding: 0.1rem;
+        padding: 1rem 0 0 0;
 
-        @include desktop {
+        @include tablet {
             grid-template-columns: 1fr 1fr 1fr 1fr;
+            padding: 1rem 3rem 2rem 3rem;
         }
 
         img {
@@ -138,6 +184,34 @@ div.profileContainer {
         }
     }
 
+    // Pantalla en caso de que no haya publicaciones
+    div.noPublications {
+        display: grid;
+        grid-template-rows: min-content min-content;
+        align-content: center;
+        padding: 0 1.5rem;
+        gap: 0.2rem;
+
+        span {
+            text-align: center;
+            color: #222;
+        }
+        
+        span:first-child {
+            font-size: 1.2rem;
+            font-weight: bold;
+
+            @include tablet {
+                font-size: 1.4rem;
+            }
+        }
+
+        span:last-child {
+            font-size: 1.1rem;
+        }
+    }
+
+    // Seccion de publicaciones tras acceder a una
     div.seePublications {
         position: fixed;
         left: 0;
@@ -149,6 +223,10 @@ div.profileContainer {
         grid-template-rows: min-content auto;
         background-color: #fff;
         z-index: 1;
+
+        @include tablet {
+            padding: 0 9rem;
+        }
 
         div.nav {
             display: grid;
@@ -172,6 +250,7 @@ div.profileContainer {
             }
         }
 
+        // Contenedor de las publicaciones
         div.list {
             display: grid;
             grid-template-columns: auto;

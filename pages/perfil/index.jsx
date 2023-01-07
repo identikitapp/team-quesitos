@@ -62,13 +62,20 @@ const Profile = () => {
                         <span><b>20</b>Seguidores</span>
                     </div>
                     <button className="editProfile">Editar perfil</button>
+                    <span className="publicationsTitle">Publicaciones</span>
                 </div>
             </div>
-            <div className="publications">
-                {publications.length > 0 && publications.map((post, index) => {
+
+            {publications.length > 0 && <div className="publications">
+                {publications.map((post, index) => {
                     return <Image key={index} onClick={()=> onSeePostHandler(post, index)} src={post.image} alt="" />
                 })}
-            </div>
+            </div>}
+            
+            {publications.length < 1 && <div className="noPublications">
+                <span>No tienes ninguna publicación</span>
+                <span>Haz una ahora</span>
+            </div>}
             {seePost[0] && <div className="seePublications">
                 <div className="nav">
                     <Image onClick={()=> onSeePostHandler(null, null)} width={30} height={30} src={arrowImg} alt="Volver atras" />
