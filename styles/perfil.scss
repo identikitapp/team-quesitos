@@ -181,6 +181,44 @@ div.profileContainer {
         }
     }
 
+    @keyframes showImage {
+        from {
+            transform: scale(0);
+        }
+
+        to {
+            transform: scale(1);
+        }
+    }
+
+    div.seeImage {
+        display: flex;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(34, 34, 34, 0.692);
+
+        img {
+            object-fit: cover;
+            border-radius: 6px;
+            animation: showImage 200ms;
+
+            @include tablet {
+                width: 260px;
+                height: auto;
+            }
+
+            @include desktop {
+                animation-duration: 160ms;
+            }
+        }
+    }
+
     // Lista de publicaciones
     div.publications {
         display: grid;

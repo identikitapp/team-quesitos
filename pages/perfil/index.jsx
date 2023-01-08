@@ -36,7 +36,8 @@ const Profile = () => {
 
     const [publications, setPublications] = useState([dataTest1, dataTest2, dataTest1, dataTest2, dataTest1, dataTest2, dataTest1, dataTest2])
     const [seePost, setSeePost] = useState([null])
-    
+    const [seeImage, setSeeImage] = useState(false)
+
     const onSeePostHandler = (post, index)=> {
         setSeePost([post, index])
         if (post) return document.body.style.overflowY = 'hidden'
@@ -50,7 +51,7 @@ const Profile = () => {
             <div style={backgroundImage} className="background"/>
             <div className="header">
                 <div className="user">
-                    <Image width={120} height={120} src={profileImg} alt="Test" />
+                    <Image onClick={()=> setSeeImage(true)} width={120} height={120} src={profileImg} alt="Test" />
                     <span className="separador"></span>
                     <div className="info">
                         <h3>NombreDeUsuario</h3>
@@ -65,6 +66,10 @@ const Profile = () => {
                     <span className="publicationsTitle">Publicaciones</span>
                 </div>
             </div>
+
+            {seeImage && <div className="seeImage" onClick={()=> setSeeImage(false)} >
+                <Image width={200} height={200} src={profileImg} alt="nombreDeUsuario" />
+            </div>}
 
             {publications.length > 0 && <div className="publications">
                 {publications.map((post, index) => {
