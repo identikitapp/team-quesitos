@@ -34,7 +34,7 @@ let dataTest2 = {
 
 const Profile = () => {
 
-    const [publications, setPublications] = useState([dataTest1, dataTest2, dataTest1, dataTest2, dataTest1])
+    const [publications, setPublications] = useState([dataTest1, dataTest2, dataTest1, dataTest2, dataTest1, dataTest2, dataTest1, dataTest2])
     const [seePost, setSeePost] = useState([null])
     
     const onSeePostHandler = (post, index)=> {

@@ -107,6 +107,11 @@ div.postContainer {
             right: 12rem;
         }
 
+        @include bigDesktop {
+            left: 27rem;
+            right: 27rem;
+        }
+
         // Seccion de arriba
         div.nav {
             display: grid;
