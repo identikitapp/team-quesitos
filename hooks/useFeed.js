@@ -2,7 +2,9 @@ import { useEffect, useState } from "react"
 
 const useFeed = () => {
     
+    // Representa la pantalla actual (feed o buscador) para el evento de deslizar
     const [swipe, setSwipe] = useState(true)
+    const [loader, setLoader] = useState(false)
     
     useEffect(()=> {
         // Evento al tocar
@@ -40,7 +42,8 @@ const useFeed = () => {
     };
 
     return {
-        swipe
+        swipe,
+        loader
     }
 }
 

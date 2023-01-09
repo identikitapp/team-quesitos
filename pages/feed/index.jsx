@@ -8,6 +8,7 @@ let dataTest1 = {
     image: testImg1,
     date: "31 de diciembre",
     content: "texto de prueba texto de prueba texto de texto de prueba texto de prueba texto de",
+    likes: 20,
     comments: [
         {
             username: 'adakos',
@@ -27,6 +28,7 @@ let dataTest2 = {
     image: testImg1,
     date: "28 de diciembre",
     content: "texto de prueba texto de prueba texto de texto de prueba texto de prueba texto de prueba texto de prueba texto de",
+    likes: 0,
     comments: []
 }
 
@@ -41,7 +43,7 @@ const Publications = ({ swipe })=> {
 
 const Feed = () => {
 
-    const { swipe } = useFeed()
+    const { swipe, loader } = useFeed()
 
     return (
         <div>

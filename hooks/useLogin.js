@@ -26,6 +26,7 @@ const useLogin = () => {
     const navigate = useRouter()
 
     // Falta backend para completar
+    // Validaciones y registro
     const onRegisterHandler = (ev)=> {
         ev.preventDefault()
         let validate = validateRegister(ev.target[0].value, ev.target[1].value, ev.target[2].value)
@@ -33,6 +34,7 @@ const useLogin = () => {
         return setError({ error: false })
     }
 
+    // Autenticacion
     const onAuthHandler = (ev)=> {
         ev.preventDefault()
         navigate.push('/feed')
