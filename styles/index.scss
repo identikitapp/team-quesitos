@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,600;0,700;0,800;1,400;1,500&display=swap');
+@import "./mixins";
 
 * {
     padding: 0;
@@ -11,7 +12,30 @@ body {
     overflow-x: hidden;
 }
 
-@import "./mixins";
+div.navbar {
+    width: 80px;
+    background-color: #fff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 4;
+    box-shadow: 0 0 12px 1px rgba(34, 34, 34, 0.096);
+    display: none;
+
+    @include tablet {
+        display: block;
+    }
+
+    @include desktop {
+        width: 200px;
+    }
+
+    @include bigDesktop {
+        width: 300px;
+    }
+}
+
 @import "./feed";
 @import "./login";
 @import "./post";

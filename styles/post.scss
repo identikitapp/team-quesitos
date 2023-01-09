@@ -3,6 +3,11 @@ div.postContainer {
     grid-template-columns: auto;
     grid-template-rows: min-content min-content min-content;
 
+    @include tablet {
+        border-radius: 10px;
+        box-shadow: 0 0 12px 1px rgba(34, 34, 34, 0.096);
+    }
+
     // Informacion del usuario, seccion de arriba
     div.userInfo {
         display: grid;
@@ -16,6 +21,11 @@ div.postContainer {
         img {
             border-radius: 50%;
             object-fit: cover;
+
+            @include tablet {
+                width: 40px;
+                height: auto;
+            }
         }
 
         // Nombre de usuario
@@ -37,8 +47,14 @@ div.postContainer {
     img.postImage {
         width: 100%;
         height: auto;
-        aspect-ratio: 1/1;
+        aspect-ratio: 1 / 1;
         cursor: pointer;
+
+        @include tablet {
+            width: calc(100% - 1.6rem);
+            justify-self: center;
+            border-radius: 6px;
+        }
     }
 
     // Contenedor de la seccion de abajo
@@ -46,6 +62,10 @@ div.postContainer {
         display: grid;
         grid-template-columns: auto;
         grid-template-rows: min-content min-content;
+        
+        @include tablet {
+            padding-bottom: 1rem;
+        }
 
         b.likes {
             padding: 0 0 .2rem .8rem;
@@ -105,18 +125,12 @@ div.postContainer {
         grid-template-rows: min-content auto min-content;
 
         @include tablet {
-            left: 6rem;
-            right: 6rem;
+            left: 80px;
         }
 
         @include desktop {
-            left: 12rem;
-            right: 12rem;
-        }
-
-        @include bigDesktop {
-            left: 27rem;
-            right: 27rem;
+            left: 200px;
+            right: 300px;
         }
 
         // Contenedor del modal de confirmacion para eliminar comentario
@@ -130,6 +144,15 @@ div.postContainer {
             top: 0;
             bottom: 0;
             z-index: 1;
+
+            @include tablet {
+                left: 80px;
+            }
+
+            @include desktop {
+                left: 200px;
+                right: 300px;
+            }
 
             // Modal
             div {
