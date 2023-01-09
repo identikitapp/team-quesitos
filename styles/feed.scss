@@ -1,20 +1,32 @@
 // Contenedor del feed
 div.feedContainer {
     display: grid;
-    grid-template-columns: auto;
-    grid-auto-rows: min-content;
-    gap: 1rem;
-    padding-bottom: 1rem;
-    background-color: #fff;
-    transition: transform 300ms ease-in-out;
 
-    @include tablet {
-        margin: 0 5.5rem;
-        box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.041);
-    }
+    div.publicationsContainer {
+        display: grid;
+        grid-auto-rows: min-content;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        background-color: #fff;
+        transition: transform 300ms ease-in-out;
+    
+        @include tablet {
+            box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.082);
+            padding: 2rem;
+            padding-left: calc(2rem + 80px);
+        }
 
-    // Swipe
-    &.back {
-        transform: translateX(-100vw);
+        @include desktop {
+            padding: 1rem calc(2rem + 300px) 1rem calc(2rem + 200px);
+        }
+
+        @include bigDesktop {
+            padding: 2rem calc(3rem + 300px);
+        }
+    
+        // Swipe
+        &.back {
+            transform: translateX(-100vw);
+        }
     }
 }

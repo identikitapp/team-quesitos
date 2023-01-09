@@ -1,7 +1,8 @@
 // Contenedor del buscador
 div.searchContainer {
     display: grid;
-    grid-auto-rows: min-content auto;
+    grid-template-columns: auto;
+    grid-template-rows: min-content auto;
     position: fixed;
     left: 0;
     right: 0;
@@ -10,6 +11,19 @@ div.searchContainer {
     transform: translateX(100vw);
     transition: transform 300ms ease-in-out;
     background-color: #fff;
+    z-index: 3;
+
+    @include tablet {
+        left: 80px;
+    }
+
+    @include desktop {
+        left: calc(100% - 300px);
+        transform: none;
+        width: 300px;
+        box-shadow: 0 0 12px 1px rgba(34, 34, 34, 0.096);
+        grid-column: 3/4;
+    }
 
     // Swipe
     &.front {
@@ -26,6 +40,19 @@ div.searchContainer {
         height: 55px;
         gap: .8rem;
         align-items: center;
+        grid-column: 1/4;
+
+        @include desktop {
+            width: calc(90% - 2.5rem);
+            height: 40px;
+            justify-self: center;
+            border: none;
+            background-color: rgb(240, 240, 240);
+            margin-top: 1rem;
+            border-radius: 30px;
+            padding: 0 1.5rem 0 1rem;
+            gap: .6rem;
+        }
 
         img {
             opacity: .6;
@@ -36,6 +63,11 @@ div.searchContainer {
             background: none;
             border: none;
             color: #777;
+            width: 100%;
+
+            @include desktop {
+                font-size: 1rem;
+            }
 
             &::placeholder {
                 color: #777;
