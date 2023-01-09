@@ -1,5 +1,3 @@
-import React from 'react'
-
 let loaderStyles = `
     .loaderContainer {
         display: grid;
@@ -8,7 +6,6 @@ let loaderStyles = `
         align-items: center;
         padding: 1rem 0;
     }
-
     .loader {
         width: 50px;
         height: 50px;
@@ -19,7 +16,6 @@ let loaderStyles = `
         box-sizing: border-box;
         animation: rotation 800ms linear infinite;
     }
-
     @keyframes rotation {
         0% {
             transform: rotate(0deg);

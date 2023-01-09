@@ -12,6 +12,7 @@ import Link from 'next/link'
 export const Mobile = () => {
     return (
 
+        
         < div className='mobileContainer'>
 
 
