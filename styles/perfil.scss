@@ -5,6 +5,35 @@ div.profileContainer {
     grid-template-rows: min-content min-content auto;
     height: 100vh;
 
+    @include tablet {
+        padding-left: 80px;
+    }
+
+    @include desktop {
+        padding-left: 200px;
+    }
+
+    @include bigDesktop {
+        padding-left: 300px;
+    }
+
+    // Comentarios de publicacion pero dentro de perfil
+    div.comments {
+        @include desktop {
+            right: 0;
+        }
+
+        @include bigDesktop {
+            left: 300px;
+        }
+
+        div.deleteModal {
+            @include desktop {
+                right: 0;
+            }
+        }
+    }
+
     // Imagen de fondo
     div.background {
         width: 100%;
@@ -174,7 +203,6 @@ div.profileContainer {
                 }
 
                 @include desktop {
-                    font-size: 1.4rem;
                     margin-top: -.8rem;
                 }
             }
@@ -204,7 +232,6 @@ div.profileContainer {
         justify-content: center;
         background-color: rgba(34, 34, 34, 0.692);
 
-        // Imagen de perfil
         img {
             object-fit: cover;
             border-radius: 6px;
@@ -241,7 +268,6 @@ div.profileContainer {
         }
 
         @include bigDesktop {
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
             gap: 0.4rem;
         }
 
@@ -326,19 +352,16 @@ div.profileContainer {
         z-index: 1;
 
         @include tablet {
-            left: 6rem;
-            right: 6rem;
+            left: 80px;
             box-shadow: 0 0 12px 1px rgba(34, 34, 34, 0.089);
         }
 
         @include desktop {
-            left: 12rem;
-            right: 12rem;
+            left: 200px;
         }
 
         @include bigDesktop {
-            left: 27rem;
-            right: 27rem;
+            left: 300px;
         }
 
         // Navbar
@@ -365,13 +388,27 @@ div.profileContainer {
         }
 
         // Contenedor de las publicaciones
-        div.list {
+        div.publicationsList {
             display: grid;
             grid-template-columns: auto;
             grid-auto-rows: min-content;
             gap: 1rem;
             overflow-y: auto;
             padding-bottom: 1rem;
+
+            @include tablet {
+                padding: 1.5rem 2rem;
+            }
+
+            @include desktop {
+                padding: 1.5rem 4rem;
+            }
+            
+            @include bigDesktop {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+                padding: 1.5rem 2rem;
+            }
         }
     }
 }

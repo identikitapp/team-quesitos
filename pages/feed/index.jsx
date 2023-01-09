@@ -34,7 +34,7 @@ let dataTest2 = {
 
 const Publications = ({ swipe })=> {
     return(
-        <div className={swipe ? "feedContainer" : "feedContainer back"}>
+        <div className={swipe ? "publicationsContainer" : "publicationsContainer back"}>
             <Post data={dataTest1} overflow={true} />
             <Post data={dataTest2} overflow={true} />
         </div>
@@ -46,7 +46,8 @@ const Feed = () => {
     const { swipe, loader } = useFeed()
 
     return (
-        <div>
+        <div className="feedContainer" >
+            <div className="navbar"></div>
             <Publications swipe={swipe} />
             <Search swipe={swipe} />
         </div>
