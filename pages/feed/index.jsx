@@ -1,3 +1,5 @@
+import { Mobile } from "../../components/Nav/Mobile"
+import { NavBar } from "../../components/Nav/NavBar"
 import Post from "../../components/Post"
 import Search from "../../components/Search"
 import useFeed from "../../hooks/useFeed"
@@ -47,6 +49,7 @@ const Feed = () => {
 
     return (
         <div>
+            <NavBar/>
             <Publications swipe={swipe} />
             <Search swipe={swipe} />
         </div>
