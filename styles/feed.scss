@@ -9,10 +9,8 @@ div.feedContainer {
         padding-bottom: 1rem;
         background-color: #fff;
         transition: transform 300ms ease-in-out;
-        grid-column: 1/4;
     
         @include tablet {
-            grid-column: 2/4;
             box-shadow: 0 0 12px 3px rgba(0, 0, 0, 0.082);
             padding: 2rem;
             padding-left: calc(2rem + 80px);
@@ -20,7 +18,6 @@ div.feedContainer {
 
         @include desktop {
             padding: 1rem calc(2rem + 300px) 1rem calc(2rem + 200px);
-            grid-column: 2/3;
         }
 
         @include bigDesktop {

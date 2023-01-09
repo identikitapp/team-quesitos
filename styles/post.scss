@@ -2,6 +2,7 @@ div.postContainer {
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: min-content min-content min-content;
+    height: min-content;
 
     @include tablet {
         border-radius: 10px;
@@ -133,6 +134,10 @@ div.postContainer {
             right: 300px;
         }
 
+        @include bigDesktop {
+            left: 300px;
+        }
+
         // Contenedor del modal de confirmacion para eliminar comentario
         div.deleteModal {
             display: grid;
@@ -152,6 +157,10 @@ div.postContainer {
             @include desktop {
                 left: 200px;
                 right: 300px;
+            }
+
+            @include bigDesktop {
+                left: 300px;
             }
 
             // Modal

@@ -52,6 +52,7 @@ const Profile = () => {
 
     return (
         <div className="profileContainer">
+            <div className="navbar"></div>
             <div style={backgroundImage} className="background"/>
             <div className="header">
                 <div className="user">
@@ -99,7 +100,7 @@ const Profile = () => {
                     <Image onClick={()=> onSeePostHandler(null, null)} width={30} height={30} src={arrowImg} alt="Volver atras" />
                     <span>Publicaciones</span>
                 </div>
-                <div className="list">
+                <div className="publicationsList">
                     {/* Se muestra primero la publicacion almacenada */}
                     <Post data={seePost[0]} overflow={false} />
                     {/* Se muestran las demas ignorando la almacenada */}
