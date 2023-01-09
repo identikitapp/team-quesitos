@@ -34,10 +34,14 @@ let dataTest2 = {
 
 const Profile = () => {
 
+    // Lista de publicaciones
     const [publications, setPublications] = useState([dataTest1, dataTest2, dataTest1, dataTest2, dataTest1, dataTest2, dataTest1, dataTest2])
+    // Publicacion seleccionada
     const [seePost, setSeePost] = useState([null])
+    // Ver imagen del perfil
     const [seeImage, setSeeImage] = useState(false)
 
+    // Si se accede a un post se bloquea el scroll, si no se desbloquea
     const onSeePostHandler = (post, index)=> {
         setSeePost([post, index])
         if (post) return document.body.style.overflowY = 'hidden'
@@ -51,7 +55,8 @@ const Profile = () => {
             <div style={backgroundImage} className="background"/>
             <div className="header">
                 <div className="user">
-                    <Image onClick={()=> setSeeImage(true)} width={120} height={120} src={profileImg} alt="Test" />
+                    {/* Al hacer click se muestra la imagen */}
+                    <Image placeholder="blur" onClick={()=> setSeeImage(true)} width={120} height={120} src={profileImg} alt="Test" />
                     <span className="separador"></span>
                     <div className="info">
                         <h3>NombreDeUsuario</h3>
@@ -67,32 +72,39 @@ const Profile = () => {
                 </div>
             </div>
 
+            {/* Imagen de perfil */}
             {seeImage && <div className="seeImage" onClick={()=> setSeeImage(false)} >
-                <Image width={200} height={200} src={profileImg} alt="nombreDeUsuario" />
+                <Image placeholder="blur" width={200} height={200} src={profileImg} alt="nombreDeUsuario" />
             </div>}
 
+            {/* Publicaciones */}
             {publications.length > 0 && <div className="publications">
                 {publications.map((post, index) => {
-                    return <Image key={index} onClick={()=> onSeePostHandler(post, index)} src={post.image} alt="" />
+                    return <Image placeholder="blur" key={index} onClick={()=> onSeePostHandler(post, index)} src={post.image} alt="" />
                 })}
             </div>}
             
+            {/* Pantalla de sin publicaciones  */}
             {publications.length < 1 && <div className="noPublications">
                 <span>No tienes ninguna publicación</span>
                 <span>Haz una ahora</span>
             </div>}
 
+            {/* Fondo blanco */}
             {seePost[0] && <div className="seeBackground"></div>}
 
+            {/* Lista de publicaciones tras acceder a una */}
             {seePost[0] && <div className="seePublications">
                 <div className="nav">
                     <Image onClick={()=> onSeePostHandler(null, null)} width={30} height={30} src={arrowImg} alt="Volver atras" />
                     <span>Publicaciones</span>
                 </div>
                 <div className="list">
+                    {/* Se muestra primero la publicacion almacenada */}
                     <Post data={seePost[0]} overflow={false} />
+                    {/* Se muestran las demas ignorando la almacenada */}
                     {publications.map((post, index) => {
-                        if (index !== seePost[1]) return <Post data={post} overflow={false} />
+                        if (index !== seePost[1]) return <Post key={index} data={post} overflow={false} />
                     })}
                 </div>
             </div>}

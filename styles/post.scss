@@ -46,6 +46,12 @@ div.postContainer {
         grid-template-columns: auto;
         grid-template-rows: min-content min-content;
 
+        b.likes {
+            padding: 0 0 .2rem .8rem;
+            font-size: 1rem;
+            color: #222;
+        }
+
         // Botones like y comentario
         div.buttons {
             display: grid;

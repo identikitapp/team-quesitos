@@ -77,12 +77,13 @@ const Post = ({ data, overflow })=> {
                 <span></span>
                 <span>{data.date}</span>
             </div>
-            <Image onDoubleClick={()=> setLike(!like)} className="postImage" src={data.image} alt={data.username} />
+            <Image placeholder="blur" onDoubleClick={()=> setLike(!like)} className="postImage" src={data.image} alt={data.username} />
             <div className="actions">
                 <div className="buttons">
                     <Image width={26} height={26} onClick={()=> setLike(!like)} src={like ? likeFillImg : likeImg} alt="Me gusta" />
                     <Image width={26} height={26} onClick={()=> onSeeCommentsHandler(true)} src={commentImg} alt="Hacer comentario" />
                 </div>
+                {data.likes > 0 && <b className="likes">{data.likes} me gusta</b>}
                 <p><b>{data.username}</b> {data.content ? data.content : ''}</p>
                 {data.comments.length > 0 && <span onClick={()=> onSeeCommentsHandler(true)} className="comments">Ver {data.comments.length === 1 ? '' : 'los'} {data.comments.length === 1 ? data.comments.length + ' comentario' : data.comments.length + ' comentarios'}</span>}
                 {data.comments.length < 1 && <span className="comments">No hay comentarios</span>}
