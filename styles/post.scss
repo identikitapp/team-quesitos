@@ -36,8 +36,9 @@ div.postContainer {
     // Publicacion
     img.postImage {
         width: 100%;
-        aspect-ratio: 1/1;
         height: auto;
+        aspect-ratio: 1/1;
+        cursor: pointer;
     }
 
     // Contenedor de la seccion de abajo
@@ -118,6 +119,65 @@ div.postContainer {
             right: 27rem;
         }
 
+        // Contenedor del modal de confirmacion para eliminar comentario
+        div.deleteModal {
+            display: grid;
+            align-items: center;
+            justify-items: center;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 1;
+
+            // Modal
+            div {
+                width: 300px;
+                height: min-content;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: min-content min-content;
+                background-color: #fff;
+                box-shadow: 0 0 8px 1px rgba(34, 34, 34, 0.103);
+                padding: 1rem;
+                gap: .8rem .6rem;
+                border-radius: 6px;
+
+                // Mensaje
+                span {
+                    grid-column: 1/3;
+                    grid-row: 1/2;
+                    text-align: center;
+                }
+
+                button {
+                    padding: .5rem;
+                    font-weight: bold;
+                    border: none;
+                    border-radius: 6px;
+                    font-size: .9rem;
+                    cursor: pointer;
+                }
+
+                // Boton cancelar
+                button:first-child {
+                    grid-column: 1/2;
+                    grid-row: 2/3;
+                    background-color: rgb(230, 230, 230);
+                    color: #111;
+                }
+
+                // Boton confirmar
+                button:last-child {
+                    grid-column: 2/3;
+                    grid-row: 2/3;
+                    background-color: red;
+                    color: #fff;
+                }
+            }
+        }
+
         // Seccion de arriba
         div.nav {
             display: grid;
@@ -153,13 +213,19 @@ div.postContainer {
             // Contenedor del comentario
             div {
                 display: grid;
-                grid-template-columns: min-content auto;
+                grid-template-columns: min-content auto min-content;
                 align-items: flex-start;
                 gap: .8rem;
 
                 img {
                     object-fit: cover;
                     border-radius: 50%;
+                }
+
+                img.delete {
+                    cursor: pointer;
+                    opacity: 0.2;
+                    align-self: center;
                 }
 
                 // Contenedor del contenido
