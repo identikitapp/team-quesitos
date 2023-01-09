@@ -1,6 +1,6 @@
 
-export const Desktop = () => {
-  return (
-    <div>Desktop</div>
-  )
+export const NavbarDesktop = () => {
+    return (
+    	<div>Desktop</div>
+    )
 }
