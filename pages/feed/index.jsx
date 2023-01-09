@@ -1,4 +1,3 @@
-import { Mobile } from "../../components/Nav/Mobile"
 import { NavBar } from "../../components/Nav/NavBar"
 import Post from "../../components/Post"
 import Search from "../../components/Search"
@@ -36,7 +35,7 @@ let dataTest2 = {
 
 const Publications = ({ swipe })=> {
     return(
-        <div className={swipe ? "feedContainer" : "feedContainer back"}>
+        <div className={swipe ? "publicationsContainer" : "publicationsContainer back"}>
             <Post data={dataTest1} overflow={true} />
             <Post data={dataTest2} overflow={true} />
         </div>
@@ -48,11 +47,11 @@ const Feed = () => {
     const { swipe, loader } = useFeed()
 
     return (
-        <div>
-            <NavBar/>
+        <>
+        <NavBar/>
             <Publications swipe={swipe} />
             <Search swipe={swipe} />
-        </div>
+        </>
     )
 }
 

@@ -4,14 +4,24 @@ import arrowImg from "../public/arrow.png"
 import commentImg from "../public/comment.png"
 import likeFillImg from "../public/likeFill.png"
 import likeImg from "../public/like.png"
+import crossImg from "../public/cross.png"
 import Image from "next/image"
 
 const Comments = ({ comments, seeComments, onSeeCommentsHandler }) => {
 
     // Cantidad de caracteres del comentario
     const [commentLength, setCommentLength] = useState(0)
-    // Si el comentario tiene mas de 1 caracter, saca la opacidad
+    // Mostrar/ocultar la confirmacion para eliminar un comentario
+    const [deleteModal, setDeleteModal] = useState(false)
+    // Si el comentario tiene minimo 1 caracter, saca la opacidad
     let commentSubmitOpacity = commentLength ? {opacity: '1'} : {opacity: '.6'}
+
+    // Manejador de eliminar comentario
+    const onDeleteCommentHandler = ()=> {
+        // Logica
+        // Cierra la confirmacion
+        setDeleteModal(false)
+    }
 
     // Si la seccion de comentarios esta abierta, devuelve esta pantalla
     if (seeComments) return(
@@ -21,6 +31,17 @@ const Comments = ({ comments, seeComments, onSeeCommentsHandler }) => {
                 <Image onClick={()=> onSeeCommentsHandler(false)} width={30} height={30} src={arrowImg} alt="Atras" />
                 <span>Comentarios</span>
             </div>
+
+            {/* Confirmacion para eliminar un comentario */}
+            {deleteModal && <div className="deleteModal">
+                <div>
+                    <span>¿Seguro que desea eliminar el comentario?</span>
+                    {/* Al clickear cierra la confirmacion */}
+                    <button onClick={()=> setDeleteModal(false)} >Cancelar</button>
+                    {/* Ejecuta el manejador de eliminar comentario */}
+                    <button onClick={onDeleteCommentHandler} >Confirmar</button>
+                </div>
+            </div>}
 
             {/* Si existen comentarios, los itera y los muestra en pantalla */}
             {comments.length > 0 && <div className="list">
@@ -33,6 +54,8 @@ const Comments = ({ comments, seeComments, onSeeCommentsHandler }) => {
                                 <span>{comment.username}</span>
                                 <p>{comment.content}</p>
                             </div>
+                            {/* Al hacer click, abre la confirmacion para eliminar el comentario */}
+                            <Image onClick={()=> setDeleteModal(true)} className="delete" width={20} height={20} src={crossImg} alt="Eliminar comentario" />
                         </div>
                     )
                 })}
@@ -57,16 +80,16 @@ const Comments = ({ comments, seeComments, onSeeCommentsHandler }) => {
 
 const Post = ({ data, overflow })=> {
 
+    // Mostrar/ocultar pantalla de comentarios
     const [seeComments, setSeeComments] = useState(false)
     const [like, setLike] = useState(false)
 
+    // Manejador del boton de comentarios
     const onSeeCommentsHandler = (value)=> {
         setSeeComments(value)
-        if (value) {
-            document.body.style.overflowY = 'hidden'
-        } else if (!value && overflow) {
-            document.body.style.overflowY = 'auto'
-        }
+        // Si se abre, deshabilita el scroll y viceversa
+        if (value) return document.body.style.overflowY = 'hidden'
+        else if (!value && overflow) return document.body.style.overflowY = 'auto'
     }
 
     return(

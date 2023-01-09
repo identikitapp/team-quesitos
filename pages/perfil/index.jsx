@@ -52,6 +52,7 @@ const Profile = () => {
 
     return (
         <div className="profileContainer">
+            <div className="navbar"></div>
             <div style={backgroundImage} className="background"/>
             <div className="header">
                 <div className="user">
@@ -100,7 +101,6 @@ const Profile = () => {
                     <span>Publicaciones</span>
                 </div>
                 <div className="list">
-                    {/* Se muestra primero la publicacion almacenada */}
                     <Post data={seePost[0]} overflow={false} />
                     {/* Se muestran las demas ignorando la almacenada */}
                     {publications.map((post, index) => {
