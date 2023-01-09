@@ -100,7 +100,7 @@ const Profile = () => {
                     <Image onClick={()=> onSeePostHandler(null, null)} width={30} height={30} src={arrowImg} alt="Volver atras" />
                     <span>Publicaciones</span>
                 </div>
-                <div className="list">
+                <div className="publicationsList">
                     <Post data={seePost[0]} overflow={false} />
                     {/* Se muestran las demas ignorando la almacenada */}
                     {publications.map((post, index) => {

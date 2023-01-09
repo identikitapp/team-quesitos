@@ -1,4 +1,3 @@
-import { NavBar } from "../../components/Nav/NavBar"
 import Post from "../../components/Post"
 import Search from "../../components/Search"
 import useFeed from "../../hooks/useFeed"
@@ -47,11 +46,11 @@ const Feed = () => {
     const { swipe, loader } = useFeed()
 
     return (
-        <>
-        <NavBar/>
+        <div className="feedContainer">
+            <div className="navbar"></div>
             <Publications swipe={swipe} />
             <Search swipe={swipe} />
-        </>
+        </div>
     )
 }
 
