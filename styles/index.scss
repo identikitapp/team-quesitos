@@ -12,34 +12,9 @@ body {
     overflow-x: hidden;
 }
 
-div.navbar {
-    width: 80px;
-    background-color: #fff;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 4;
-    box-shadow: 0 0 12px 1px rgba(34, 34, 34, 0.096);
-    display: none;
-
-    @include tablet {
-        display: block;
-    }
-
-    @include desktop {
-        width: 200px;
-    }
-
-    @include bigDesktop {
-        width: 300px;
-    }
-}
-
 @import "./feed";
 @import "./login";
 @import "./post";
 @import "./perfil";
 @import "./search";
-@import "./mobileNav";
-@import "./desktopNav";
+@import "./navbar";
