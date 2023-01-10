@@ -4,7 +4,6 @@ div.profileContainer {
     grid-template-columns: auto;
     grid-template-rows: min-content min-content auto;
     height: 100vh;
-    padding-bottom: 16rem;
 
     @include tablet {
         padding-left: 80px;
@@ -234,6 +233,18 @@ div.profileContainer {
         justify-content: center;
         background-color: rgba(34, 34, 34, 0.692);
 
+        @include tablet {
+            left: 80px;
+        }
+
+        @include desktop {
+            left: 200px;
+        }
+
+        @include bigDesktop {
+            left: 300px;
+        }
+
         img {
             object-fit: cover;
             border-radius: 6px;
@@ -256,7 +267,7 @@ div.profileContainer {
         grid-template-columns: 1fr 1fr 1fr;
         grid-auto-rows: min-content;
         gap: .1rem;
-        padding: 1rem 0 0 0;
+        padding: 1rem 0 4rem 0;
 
         @include tablet {
             grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -355,7 +366,6 @@ div.profileContainer {
 
         @include tablet {
             left: 80px;
-            box-shadow: 0 0 12px 1px rgba(34, 34, 34, 0.089);
         }
 
         @include desktop {

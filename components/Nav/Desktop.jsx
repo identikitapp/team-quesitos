@@ -1,6 +1,8 @@
 
-export const NavbarDesktop = () => {
+const NavbarDesktop = () => {
     return (
-    	<div>Desktop</div>
+    	<div className="desktopContainer"></div>
     )
 }
+
+export default NavbarDesktop
