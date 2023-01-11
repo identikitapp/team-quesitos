@@ -1,0 +1,12 @@
+// Contenedor del feed
+div.feedContainer {
+    display: grid;
+
+    div.publicationsContainer {
+        display: grid;
+        grid-auto-rows: min-content;
+        gap: 1rem;
+        padding-bottom: 1rem;
+        background-color: #fff;
+    }
+}

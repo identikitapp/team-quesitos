@@ -1,0 +1,119 @@
+div.postContainer {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: min-content min-content min-content;
+    height: min-content;
+
+    @include tablet {
+        border-radius: 10px;
+        box-shadow: 0 0 12px 1px rgba(34, 34, 34, 0.096);
+    }
+
+    // Informacion del usuario, seccion de arriba
+    div.userInfo {
+        display: grid;
+        grid-template-columns: min-content min-content auto min-content;
+        grid-template-rows: min-content;
+        align-items: center;
+        gap: .7rem;
+        padding: .7rem 1rem .7rem .8rem;
+
+        // Perfil
+        img {
+            border-radius: 50%;
+            object-fit: cover;
+
+            @include tablet {
+                width: 40px;
+                height: auto;
+            }
+        }
+
+        // Nombre de usuario
+        h4 {
+            text-transform: capitalize;
+            color: #222;
+        }
+
+        // Fecha
+        span {
+            font-size: 0.9rem;
+            opacity: .6;
+            font-family: sans-serif;
+            white-space: nowrap;
+        }
+    }
+
+    // Publicacion
+    img.postImage {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        cursor: pointer;
+
+        @include tablet {
+            width: calc(100% - 1.6rem);
+            justify-self: center;
+            border-radius: 6px;
+        }
+    }
+
+    // Contenedor de la seccion de abajo
+    div.actions {
+        display: grid;
+        grid-template-columns: auto;
+        grid-template-rows: min-content min-content;
+        
+        @include tablet {
+            padding-bottom: 1rem;
+        }
+
+        b.likes {
+            padding: 0 0 .2rem .8rem;
+            font-size: 1rem;
+            color: #222;
+        }
+
+        b.likes {
+            padding: 0 0 .2rem .8rem;
+            font-size: 1rem;
+            color: #222;
+        }
+
+        // Botones like y comentario
+        div.buttons {
+            display: grid;
+            grid-template-columns: min-content min-content;
+            grid-template-rows: min-content;
+            padding: .5rem .6rem .4rem .8rem;
+            align-items: center;
+            gap: .6rem;
+
+            img {
+                cursor: pointer;
+            }
+        }
+
+        // Texto de la publicacion
+        p {
+            padding: 0 .8rem .3rem .8rem;
+            word-wrap: break-word;
+            word-break: keep-all;
+            color: #222;
+            
+            // Nombre de usuario
+            b {
+                text-transform: capitalize;
+                color: #222;
+            }
+        }
+
+        // Indicador de comentarios, abajo de todo
+        span.comments {
+            padding: 0 .8rem;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: #555;
+        }
+    }
+}
