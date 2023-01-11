@@ -2,14 +2,11 @@ import { useEffect, useState } from "react"
 
 const useFeed = () => {
     
-    // Representa la pantalla actual (feed o buscador) para el evento de deslizar
     const [swipe, setSwipe] = useState(true)
     const [loader, setLoader] = useState(false)
     
     useEffect(()=> {
-        // Evento al tocar
         document.addEventListener("touchstart", handleTouchStart, false);
-        // Evento al mover despues de tocar
         document.addEventListener("touchmove", handleTouchEnd, false);
         
         return ()=> {
@@ -18,16 +15,13 @@ const useFeed = () => {
         }
     }, [])
 
-    // Posicion del tap
     let clientX = null
 
-    // Actualiza la posicion del primer tap
     const handleTouchStart = (ev)=> {
         let firstTouch = ev.touches[0];
         clientX = firstTouch.clientX
     };
 
-    // Compara la posicion del primer tap con la posicion actual
     const handleTouchEnd = (ev)=> {
         // Swipe a la izquierda
         if (ev.touches[0].clientX > (clientX + 100)) {

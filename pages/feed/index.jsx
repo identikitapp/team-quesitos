@@ -1,7 +1,6 @@
-import { NavBar } from "../../components/Nav/NavBar"
-import Post from "../../components/Post"
-import Search from "../../components/Search"
 import useFeed from "../../hooks/useFeed"
+import Post from "../../components/Post/Post"
+import Search from "../../components/Search/Search"
 import testImg1 from "../../public/testImg1.png"
 
 let dataTest1 = {
@@ -47,11 +46,10 @@ const Feed = () => {
     const { swipe, loader } = useFeed()
 
     return (
-        <>
-        <NavBar/>
+        <div className="feedContainer">
             <Publications swipe={swipe} />
             <Search swipe={swipe} />
-        </>
+        </div>
     )
 }
 

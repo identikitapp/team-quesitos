@@ -1,4 +1,5 @@
 import "../styles/index.scss"
+import Navbar from "../components/Nav/Navbar"
 
 export default function App({ Component, pageProps }) {
   return (
@@ -6,4 +7,5 @@ export default function App({ Component, pageProps }) {
     <Component {...pageProps} />
     
   )
+
 }
