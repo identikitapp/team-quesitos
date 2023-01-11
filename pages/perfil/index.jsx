@@ -1,4 +1,5 @@
 import { useState } from "react"
+import Navbar from "../../components/Nav/Navbar"
 import ProfileHeader from "../../components/Perfil/ProfileHeader"
 import ProfileImage from "../../components/Perfil/ProfileImage"
 import ProfilePublications from "../../components/Perfil/ProfilePublications"
@@ -31,6 +32,7 @@ const Profile = () => {
             <ProfileImage seeImage={seeImage} setSeeImage={setSeeImage} />
             <ProfilePublications publications={publications} onSeePostHandler={onSeePostHandler} />
             <ProfilePublicationsList seePost={seePost} onSeePostHandler={onSeePostHandler} publications={publications} />
+            <Navbar/>
         </div>
     )
 }

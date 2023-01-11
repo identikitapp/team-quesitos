@@ -2,6 +2,8 @@ import useFeed from "../../hooks/useFeed"
 import Post from "../../components/Post/Post"
 import Search from "../../components/Search/Search"
 import testImg1 from "../../public/testImg1.png"
+import Navbar from "../../components/Nav/Navbar"
+import { Header } from "../../components/header/Header"
 
 let dataTest1 = {
     username: "adakos",
@@ -47,6 +49,8 @@ const Feed = () => {
 
     return (
         <div className="feedContainer">
+            <Navbar/>
+            <Header/>
             <Publications swipe={swipe} />
             <Search swipe={swipe} />
         </div>

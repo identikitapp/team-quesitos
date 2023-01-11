@@ -1,0 +1,5 @@
+.desktopContainer{
+    @include tablet {
+        display: initial;
+    }
+}

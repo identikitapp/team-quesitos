@@ -1,13 +1,13 @@
 import NavbarMobile from "./Mobile"
-import NavbarTablet from "./Tablet"
+// import NavbarTablet from "./Tablet"
 import NavbarDesktop from "./Desktop"
 
 const Navbar = () => {
-    return(
+    return (
         <div className="navbar">
             <NavbarMobile />
-            <NavbarTablet />
             <NavbarDesktop />
+            {/* <NavbarTablet /> */}
         </div>
     )
 }

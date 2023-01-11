@@ -1,7 +1,7 @@
 
 const NavbarDesktop = () => {
     return (
-    	<div className="desktopContainer"></div>
+    	<div className="desktopContainer">desktop</div>
     )
 }
 

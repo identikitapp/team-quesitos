@@ -1,0 +1,5 @@
+.headerDesktop{
+    @include tablet {
+        display: initial;
+    }
+}

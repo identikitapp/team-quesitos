@@ -1,0 +1,87 @@
+
+.headerMobile{
+    @include desktop{
+        display: none;
+     }
+    .logo{
+        background-color: #fef0ef;
+        height: 40px;
+    }
+    .header{
+            width:3rem;
+    }
+    .header{
+        background-image: url("../public/testImg1.png");
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-position:center;
+        background-color: red;
+        width: 100%;
+        height: 8rem; 
+        opacity: 0.8;      
+    }
+    .headerProfile{
+        width: 100%;
+        height: 8rem; 
+        background-color:#fef0ef;
+        margin-bottom: 2rem;
+        -webkit-box-shadow: 0px 11px 16px -8px rgba(0,0,0,0.74);
+-moz-box-shadow: 0px 11px 16px -8px rgba(0,0,0,0.74);
+box-shadow: 0px 11px 16px -8px rgba(0,0,0,0.74);
+display:inline-flex;
+flex-direction:row;
+justify-content:space-around;
+.follows{
+    .hashtag{
+        .hashtag, b{
+            position: relative;
+            right: 180px;
+            color:#d36a62;
+        }
+    }
+.followersDisplay{
+    display: flex;
+    flex-direction: row;
+    background-color: #fff;
+    border-radius: 20px;
+    padding-right: 10px;
+    -webkit-box-shadow: inset 2px 0px 12px -6px rgba(0,0,0,0.75);
+-moz-box-shadow: inset 2px 0px 12px -6px rgba(0,0,0,0.75);
+box-shadow: inset 2px 0px 12px -6px rgba(0,0,0,0.75);
+    h3{
+        margin-left: 20px;
+        p{
+            color: #fef0ef;
+        }
+    };
+}
+h2, .name{
+    position: relative;
+    left: 1rem;
+}
+}
+    .imgProfile{
+        background-color: #fff;
+        padding: 20px;
+       border-radius: 60px;
+       border: 1px solid ;
+       position: relative;
+        bottom: 45px;
+        left: -20px;
+        -webkit-box-shadow: inset 0px 0px 33px -25px rgba(0,0,0,0.74);
+-moz-box-shadow: inset 0px 0px 33px -25px rgba(0,0,0,0.74);
+box-shadow: inset 0px 0px 33px -25px rgba(0,0,0,0.74);
+    }
+    .imgProfileMax{
+        background-color: #fff;
+        padding: 40px;
+       border-radius: 10px;
+       border: 1px solid ;
+       position: relative;
+        bottom: 80px;
+        -webkit-box-shadow: inset 0px 0px 33px -25px rgba(0,0,0,0.74);
+-moz-box-shadow: inset 0px 0px 33px -25px rgba(0,0,0,0.74);
+box-shadow: inset 0px 0px 33px -25px rgba(0,0,0,0.74);
+    }
+}
+}
