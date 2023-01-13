@@ -1,4 +1,5 @@
 import Post from "../../components/Post/Post"
+import { useUserContext } from "../../context/user"
 import testImg1 from "../../public/testImg1.png"
 
 let dataTest1 = {
@@ -22,8 +23,11 @@ const Publications = ()=> {
 
 const Feed = () => {
 
+    const { user } = useUserContext()
+
     return (
         <div className="feedContainer">
+            <span>{user && user.username}</span>
             <Publications />
         </div>
     )
