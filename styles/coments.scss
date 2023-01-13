@@ -1,0 +1,59 @@
+.coments {
+    @include tablet {
+        display: none;
+    }
+    border: 2px solid #c06363 ;
+    margin-top: 5px;
+    grid-auto-rows: min-content;
+    width: 355px;
+    height: 225px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 14px;
+
+
+    .container {
+        display: flex;
+        .circle {
+            background-image: url('../public/pesa.jpg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            border: 2px solid #c06363 ;
+            border-radius: 50%;
+            margin-left: 7px;
+            margin-top: 9px;
+            height: 80px;
+            width: 80px;
+        }
+
+        .name {
+            h5{opacity:0.8 }
+            h6{opacity: 0.5};
+            margin-left:20px ;
+            margin-top: 30px;
+        }
+    }
+    .text{
+        font-weight: bold;
+       margin-top: 10px;
+      position: relative;
+      left: 11px;
+        text-align: justify;
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    word-break:break-all;
+
+    }
+    .likeAndComments{
+        padding-top: 20px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        .like{
+            display: flex;
+        }
+    }
+}
