@@ -4,7 +4,7 @@ import User from "../../components/nav/User"
 
 const Profile = () => {
 
-    // const [publications, setPublications] = useState([dataTest1, dataTest1, dataTest1, dataTest1])
+    const [publications, setPublications] = useState([dataTest1, dataTest1, dataTest1, dataTest1])
     const [seePost, setSeePost] = useState([null, null])
     const [seeImage, setSeeImage] = useState(false)
 
