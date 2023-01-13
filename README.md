@@ -1,5 +1,48 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# Docs
+
+### Hooks
+
+- **useLogin()** puede retornar:
+
+    - **error**: estado de tipo { error: boolean, message: string } para la gestión de errores.
+    
+    - **formType**: estado que gestiona el tipo de formulario, devuelve un booleano.
+
+    - **setFormType()**: manejador del estado formType, recibe un booleano.
+
+    - **onRegisterHandler()**: recibe 4 parametros de tipo string **(username, email, password, confirmPassword)**. Se encarga del registro del usuario.
+
+    - **onAuthHandler()**: recibe 2 parametros de tipo string **(username, password)**, username puede referenciar un nombre de usuario o un email. Se encarga de la autenticación del usuario.
+
+```bash
+# Ejemplos
+const { error, onRegisterHandler, onAuthHandler } = useLogin()
+
+onRegisterHandler("usuario1", "usuario1@gmail.com", "passwordUsuario1", "passwordUsuario1")
+
+onAuthHandler("usuario1", "passwordUsuario1")
+```
+
+### Utilities
+
+- **validateRegister()**: recibe 4 parametros de tipo string **(username, email, password, confirmPassword)**. Valida todos los datos y devuelve el siguiente objeto.
+
+```bash
+{
+    error: boolean,
+    message: string
+}
+```
+
+### Context
+
+- **useUserContext()** puede retornar:
+
+    - **user**: estado del usuario.
+    - **setUser()**: manejador del estado **user**
+
 ## Getting Started
 
 First, run the development server:

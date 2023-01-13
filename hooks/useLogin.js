@@ -1,47 +1,57 @@
 import { useState } from "react"
-import { validateUsername } from '../utilities/validateUsername'
-import { validateEmail } from '../utilities/validateEmail'
-import { validatePassword } from '../utilities/validatePassword'
+import { validateRegister } from '../utilities/validations'
 import { useRouter } from "next/router"
-
-const validateRegister = (username, email, password)=> {
-    let result = validateUsername(username.toLowerCase())
-    if (result.error) return result
-
-    result = validateEmail(email.toLowerCase())
-    if (result.error) return result
-
-    result = validatePassword(password)
-    if (result.error) return result
-
-    return { error: false }
-}
+import { userLogin, userRegister } from "../services/user"
+import { useUserContext } from "../context/user"
 
 const useLogin = () => {
-    const [action, setAction] = useState(false)
-    const [remember, setRemember] = useState(true)
+
+    // Context del usuario
+    const { setUser } = useUserContext()
+    // Tipo de formulario (login o registro, true o false)
+    const [formType, setFormType] = useState(false)
     const [error, setError] = useState({ error: false })
     const navigate = useRouter()
 
-    // Falta backend para completar
-    const onRegisterHandler = (ev)=> {
+    // Registro
+    const onRegisterHandler = async (ev)=> {
         ev.preventDefault()
-        let validate = validateRegister(ev.target[0].value, ev.target[1].value, ev.target[2].value)
-        if (validate.error) return setError({ error: validate.error, message: validate.message })
-        return setError({ error: false })
+
+        let [username, email, password, confirmPassword] = [ev.target[0].value.toLowerCase(), ev.target[1].value.toLowerCase(), ev.target[2].value, ev.target[3].value]
+
+        // Validaciones
+        let validate = validateRegister(username, email, password, confirmPassword)
+        if (validate.error) return setError(validate)
+
+        // Registro
+        let response = await userRegister(username, email, password, confirmPassword).then(res => { return res })
+        if (response.error) return setError({ response })
+
+        setFormType(false)
+        setError({ error: false })
+        return navigate.push('/login')
     }
 
-    const onAuthHandler = (ev)=> {
+    // Login
+    const onAuthHandler = async (ev)=> {
         ev.preventDefault()
-        navigate.push('/feed')
+
+        let [username, password] = [ev.target[0].value.toLowerCase(), ev.target[1].value.toLowerCase()]
+
+        // Inicio de sesión
+        let response = await userLogin(username, password).then(res => { return res })
+        if (response.error) return setError({ response })
+
+        // JWT
+        document.cookie = 'token=' + response.token + '; max-age=' + (60 * 15) + '; path=/; samesite=strict'
+        setUser(response.data)
+        return navigate.push('/feed')
     }
 
     return {
-        action,
-        setAction,
-        remember,
-        setRemember,
         error,
+        formType,
+        setFormType,
         onRegisterHandler,
         onAuthHandler
     }
