@@ -14,7 +14,7 @@ const useLogin = () => {
     const navigate = useRouter()
 
     // Registro
-    const onRegisterHandler = (ev)=> {
+    const onRegisterHandler = async (ev)=> {
         ev.preventDefault()
 
         let [username, email, password, confirmPassword] = [ev.target[0].value.toLowerCase(), ev.target[1].value.toLowerCase(), ev.target[2].value, ev.target[3].value]
@@ -24,35 +24,28 @@ const useLogin = () => {
         if (validate.error) return setError(validate)
 
         // Registro
-        userRegister(username, email, password, confirmPassword).then(res => {
-            if (res.error) return setError({ res })
-            setFormType(false)
-            setError({ error: false })
-            return navigate.push('/login')
-        }).catch(err => {
-            console.log(err)
-            return setError({ error: true, message: "Ocurrio un error, intente de nuevo mas tarde" })
-        })
+        let response = await userRegister(username, email, password, confirmPassword).then(res => { return res })
+        if (response.error) return setError({ response })
 
+        setFormType(false)
+        setError({ error: false })
+        return navigate.push('/login')
     }
 
     // Login
-    const onAuthHandler = (ev)=> {
+    const onAuthHandler = async (ev)=> {
         ev.preventDefault()
 
         let [username, password] = [ev.target[0].value.toLowerCase(), ev.target[1].value.toLowerCase()]
 
         // Inicio de sesión
-        userLogin(username, password).then(res => {
-            if (res.error) return setError({ res })
-            // JWT
-            document.cookie = 'token=' + res.token + '; max-age=' + (60 * 15) + '; path=/; samesite=strict'
-            setUser(res.data)
-            return navigate.push('/feed')
-        }).catch(err => {
-            console.log(err)
-            return setError({ error: true, message: 'Ocurrio un error, intente de nuevo mas tarde' })
-        })
+        let response = await userLogin(username, password).then(res => { return res })
+        if (response.error) return setError({ response })
+
+        // JWT
+        document.cookie = 'token=' + response.token + '; max-age=' + (60 * 15) + '; path=/; samesite=strict'
+        setUser(response.data)
+        return navigate.push('/feed')
     }
 
     return {
