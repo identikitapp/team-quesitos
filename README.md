@@ -4,13 +4,15 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ### Hooks
 
-- **useLogin()** puede retornar:
+- **useLogin** puede retornar:
 
     - **error**: estado de tipo { error: boolean, message: string } para la gestión de errores.
+
+    - **loader**: devuelve un booleano, representa periodos de carga.
     
     - **formType**: estado que gestiona el tipo de formulario, devuelve un booleano.
 
-    - **setFormType()**: manejador del estado formType, recibe un booleano.
+    - **onSetFormTypeHandler()**: manejador del estado formType, no recibe parametros.
 
     - **onRegisterHandler()**: recibe 4 parametros de tipo string **(username, email, password, confirmPassword)**. Se encarga del registro del usuario.
 
@@ -18,7 +20,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ```bash
 # Ejemplos
-const { error, onRegisterHandler, onAuthHandler } = useLogin()
+const { onRegisterHandler, onAuthHandler } = useLogin()
 
 onRegisterHandler("usuario1", "usuario1@gmail.com", "passwordUsuario1", "passwordUsuario1")
 
@@ -38,7 +40,7 @@ onAuthHandler("usuario1", "passwordUsuario1")
 
 ### Context
 
-- **useUserContext()** puede retornar:
+- **useUserContext** puede retornar:
 
     - **user**: estado del usuario.
     - **setUser()**: manejador del estado **user**
