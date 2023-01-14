@@ -1,13 +1,12 @@
-import Image from 'next/image'
-import likes from '../../public/like.png'
-import comment from '../../public/comment.png'
-import likeFill from '../../public/likeFill.png'
-import { useState } from 'react'
+import Image from 'next/image';
+import likes from '../../public/like.png';
+import comment from '../../public/comment.png';
+import likeFill from '../../public/likeFill.png';
+import { useState } from 'react';
 
 const Coments = () => {
   const [like , setLike] = useState(true);
   const [count, setCount] = useState(7)
-
   const handleClick = () => {
     setLike(!like)
     if(like===true){

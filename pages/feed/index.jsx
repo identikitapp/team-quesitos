@@ -1,5 +1,7 @@
 import Post from "../../components/Post/Post"
 import testImg1 from "../../public/testImg1.png"
+import { useUserContext } from "../../context/user";
+
 
 let dataTest1 = {
     username: "adakoss",
@@ -11,6 +13,7 @@ let dataTest1 = {
 }
 
 const Publications = ()=> {
+    
 
     return(
         <div className="publicationsContainer">
@@ -21,7 +24,8 @@ const Publications = ()=> {
 }
 
 const Feed = () => {
-
+    const {username} = useUserContext()
+console.log(username)
     return (
         <div className="feedContainer">
             <Publications />
