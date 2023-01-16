@@ -27,3 +27,7 @@ export const userLogin = async (username, password) => {
 
     return await fetch(API_URL + '/auth/login', options).then(response => response.json())
 }
+
+export const getUser = async ()=> {
+    return await fetch("/api/user").then(response => response.json())
+}

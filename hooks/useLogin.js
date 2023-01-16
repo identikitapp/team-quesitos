@@ -6,6 +6,7 @@ import { useUserContext } from "../context/user"
 
 const useLogin = () => {
 
+    const { update, setUpdate } = useUserContext()
     // Tipo de formulario (login o registro, true o false)
     const [formType, setFormType] = useState(false)
     const [loader, setLoader] = useState(false)
@@ -22,7 +23,6 @@ const useLogin = () => {
         if (validate.error) return setError(validate)
         
         // Registro
-<<<<<<< HEAD
         setLoader(true)
         userRegister(username, email, password, confirmPassword).then(res => {
             if (res.error) return setError({ error: true, message: res.message })
@@ -32,14 +32,6 @@ const useLogin = () => {
         }).catch(err => {
             console.log(err)
             setLoader(false)
-=======
-        userRegister(username, email, password, confirmPassword).then(res => {
-            if (res.error) return setError({ res })
-            setFormType(false)
-            return setError({ error: false })
-        }).catch(err => {
-            console.log(err)
->>>>>>> ramaSimon
             return setError({ error: true, message: "Ocurrio un error, intente de nuevo mas tarde" })
         })
 
@@ -51,7 +43,6 @@ const useLogin = () => {
         let [username, password] = [ev.target[0].value.toLowerCase(), ev.target[1].value.toLowerCase()]
 
         // Inicio de sesión
-<<<<<<< HEAD
         setLoader(true)
         userLogin(username, password).then(res => {
             if (res.error) {
@@ -60,6 +51,7 @@ const useLogin = () => {
             }
              // JWT
             document.cookie = 'token=' + res.token + '; max-age=' + (60 * 15) + '; path=/; samesite=strict'
+            setUpdate(!update)
             return navigate.push('/feed')
         }).catch(err => {
             console.log(err)
@@ -71,18 +63,6 @@ const useLogin = () => {
     const onSetFormTypeHandler = ()=> {
         setError({ error: null })   
         setFormType(!formType)
-=======
-        userLogin(username, password).then(res => {
-            if (res.error) return setError({ res })
-            // JWT
-            document.cookie = 'token=' + res.token + '; max-age=' + (60 * 15) + '; path=/; samesite=strict'
-            setUser(res.data)
-            return navigate.push('/feed')
-        }).catch(err => {
-            console.log(err)
-            return setError({ error: true, message: 'Ocurrio un error, intente de nuevo mas tarde' })
-        })
->>>>>>> ramaSimon
     }
 
     return {
