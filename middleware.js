@@ -3,7 +3,6 @@ import { jwtVerify } from "jose";
 
 const routes = ["/feed", "/perfil", "/login"]
 
-
 export async function middleware(req) {
 
     // Si la ruta esta dentro de las rutas permitidas, continua
@@ -20,12 +19,7 @@ export async function middleware(req) {
         // Veritica el token. Si es valido continua, si no, redirecciona a login 
         try {
             const { payload } = await jwtVerify(jwt.value, new TextEncoder().encode(process.env.TOKEN_SECRET))
-            console.log(payload)
-            let response = NextResponse.next()
-            // Envío la informacion de usuario por cookies
-            response.cookies.set("id", payload.id)
-            response.cookies.set("username", payload.username)
-            return response
+            return NextResponse.next()
         } catch (error) {
             console.log(error)
             return NextResponse.redirect(new URL("/login", req.url))
