@@ -2,9 +2,16 @@ import Image from 'next/image';
 import likes from '../../public/like.png';
 import comment from '../../public/comment.png';
 import likeFill from '../../public/likeFill.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useUserContext } from '../../context/user';
 
 const Coments = () => {
+  const {user} = useUserContext()
+  useEffect(() => {
+    console.log('retorno')
+    },[])
+  
+   console.log(user)
   const [like , setLike] = useState(true);
   const [count, setCount] = useState(7)
   const handleClick = () => {
@@ -17,6 +24,9 @@ const Coments = () => {
   }
   return (
     <>
+    <h3>
+
+    </h3>
       <div className="coments">
         <div className="container">
           <div className="circle">
@@ -24,7 +34,7 @@ const Coments = () => {
           </div>
           <div className="name">
             <h3>
-              Adakos
+               {user && user.username } 
             </h3>
             <h5>
               @adakos

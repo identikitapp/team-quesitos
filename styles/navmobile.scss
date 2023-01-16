@@ -2,6 +2,9 @@
 display: flex;
 justify-content:space-between;
 border-bottom: 2px solid #d34646;
+@include tablet{
+    display: none;
+}
     .logo{
        img{
         margin-top: 20px;
@@ -15,17 +18,19 @@ border-bottom: 2px solid #d34646;
         margin-top: 20px;
         margin-left: 22px;
         h3{
-            color: black;
-            margin-top: 5px;
+            font-size: 1rem;
+            color: $texto;
+            margin-top: 0.5rem;
             position: relative;
-            right: 5px;
+            right: 1px;
             margin-right: 10px;
         }
-        .logoUser{
-            color: #d34646;
-            border: 2px solid black ;
+        .logoUser, .search{
+            color: $borde;
+            border: 2px solid $borde ;
             border-radius:60%;
             padding: 2px;
+            margin-left: 5px;
 
         }
     }
