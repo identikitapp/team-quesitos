@@ -2,7 +2,7 @@
     @include tablet {
         display: none;
     }
-    border: 2px solid #c06363 ;
+    border: 2px solid $borde ;
     margin-top: 5px;
     grid-auto-rows: min-content;
     width: 355px;
@@ -19,7 +19,7 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: contain;
-            border: 2px solid #c06363 ;
+            border: 2px solid $borde ;
             border-radius: 50%;
             margin-left: 7px;
             margin-top: 9px;
@@ -27,7 +27,8 @@
             width: 80px;
         }
 
-        .name {
+        .name {                
+              color: $texto;           
             h5{opacity:0.8 }
             h6{opacity: 0.5};
             margin-left:20px ;
@@ -35,6 +36,7 @@
         }
     }
     .text{
+        color: $texto;
         font-weight: bold;
        margin-top: 10px;
       position: relative;
@@ -48,6 +50,7 @@
 
     }
     .likeAndComments{
+        color: $icono;
         padding-top: 20px;
         display: flex;
         flex-direction: row;

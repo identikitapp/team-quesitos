@@ -1,8 +1,11 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import Nav from "../../components/nav/nav"
+>>>>>>> ramaSimon
 import Post from "../../components/Post/Post"
+import { useUserContext } from "../../context/user"
 import testImg1 from "../../public/testImg1.png"
-import { useUserContext } from "../../context/user";
-
 
 let dataTest1 = {
     username: "adakoss",
@@ -14,7 +17,6 @@ let dataTest1 = {
 }
 
 const Publications = ()=> {
-    
 
     return(
         <div className="publicationsContainer">
@@ -27,11 +29,17 @@ const Publications = ()=> {
 =======
 >>>>>>> 316d12fd2ad0de010bd5bcc40d31bdfcc1856643
 const Feed = () => {
-    const {username} = useUserContext()
-console.log(username)
+
+    const { user } = useUserContext()
+
     return (
         <div className="feedContainer">
+<<<<<<< HEAD
 
+=======
+            <Nav/>
+            <Publications />
+>>>>>>> ramaSimon
         </div>
     )
 }
