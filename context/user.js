@@ -1,9 +1,19 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
+import { useCookies } from "react-cookie"
 
 const UserContext = createContext();
 
 export function UserProvider({ children }) {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState({ id: "", username: "" })
+    // Accedo a las cookies enviadas en el middleware
+    const [cookie, setCookie] = useCookies()
+    
+    useEffect(()=> {
+        setUser({
+            id: cookie.id,
+            username: cookie.username
+        })
+    }, [])
 
     let values = { user, setUser }
 

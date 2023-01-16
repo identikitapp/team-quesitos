@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Post from "../../components/Post/Post"
 import testImg1 from "../../public/testImg1.png"
 import { useUserContext } from "../../context/user";
@@ -23,12 +24,14 @@ const Publications = ()=> {
     )
 }
 
+=======
+>>>>>>> 316d12fd2ad0de010bd5bcc40d31bdfcc1856643
 const Feed = () => {
     const {username} = useUserContext()
 console.log(username)
     return (
         <div className="feedContainer">
-            <Publications />
+
         </div>
     )
 }

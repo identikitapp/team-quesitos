@@ -3,7 +3,9 @@ import { jwtVerify } from "jose";
 
 const routes = ["/feed", "/perfil", "/login"]
 
+
 export async function middleware(req) {
+
     // Si la ruta esta dentro de las rutas permitidas, continua
     let currentRoute = req.nextUrl.pathname
     if (!routes.includes(currentRoute)) return NextResponse.redirect(new URL("/feed", req.url))
@@ -19,7 +21,11 @@ export async function middleware(req) {
         try {
             const { payload } = await jwtVerify(jwt.value, new TextEncoder().encode(process.env.TOKEN_SECRET))
             console.log(payload)
-            return NextResponse.next()
+            let response = NextResponse.next()
+            // Envío la informacion de usuario por cookies
+            response.cookies.set("id", payload.id)
+            response.cookies.set("username", payload.username)
+            return response
         } catch (error) {
             console.log(error)
             return NextResponse.redirect(new URL("/login", req.url))
