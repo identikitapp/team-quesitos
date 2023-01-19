@@ -12,11 +12,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
     
     - **formType**: estado que gestiona el tipo de formulario, devuelve un booleano.
 
-    - **onSetFormTypeHandler()**: manejador del estado formType, no recibe parametros.
+    - **onSetFormTypeHandler**: manejador del estado formType, no recibe parametros.
 
-    - **onRegisterHandler()**: recibe 4 parametros de tipo string **(username, email, password, confirmPassword)**. Se encarga del registro del usuario.
+    - **onRegisterHandler**: recibe 4 parametros de tipo string **(username, email, password, confirmPassword)**. Se encarga del registro del usuario.
 
-    - **onAuthHandler()**: recibe 2 parametros de tipo string **(username, password)**, username puede referenciar un nombre de usuario o un email. Se encarga de la autenticación del usuario.
+    - **onAuthHandler**: recibe 2 parametros de tipo string **(username, password)**, username puede referenciar un nombre de usuario o un email. Se encarga de la autenticación del usuario.
 
 ```bash
 # Ejemplos
@@ -29,7 +29,7 @@ onAuthHandler("usuario1", "passwordUsuario1")
 
 ### Utilities
 
-- **validateRegister()**: recibe 4 parametros de tipo string **(username, email, password, confirmPassword)**. Valida todos los datos y devuelve el siguiente objeto.
+- **validateRegister**: recibe 4 parametros de tipo string **(username, email, password, confirmPassword)**. Valida todos los datos y devuelve un objeto de tipo:
 
 ```bash
 {
@@ -43,11 +43,30 @@ onAuthHandler("usuario1", "passwordUsuario1")
 - **useUserContext** puede retornar:
 
     - **user**: estado del usuario.
-    - **setUser()**: manejador del estado **user**
+    - **setUser**: manejador del estado **user**.
+
+### Endpoints
+
+- **/api/user**: devuelve el payload del token si es que existe.
 
 ## Getting Started
 
-First, run the development server:
+Requires the following environment variables:
+
+```bash
+TOKEN_SECRET=[JWT_SECRET_WORD]
+API_HOST=[API_HOST]
+API_PORT=[API_PORT]
+NEXT_PUBLIC_API_URL=http://$API_HOST:$API_PORT
+
+# Example
+TOKEN_SECRET=k3DoL89SqkEpC
+API_HOST=127.0.0.1
+API_PORT=3001
+NEXT_PUBLIC_API_URL=http://$API_HOST:$API_PORT
+```
+
+Run the development server:
 
 ```bash
 npm run dev

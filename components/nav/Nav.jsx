@@ -1,15 +1,12 @@
-import React from 'react'
-import NavMobile from '../nav/NavMobile'
+import NavMobile from './NavMobile'
 import NavDesktop from './NavDesktop'
 
 const Nav = () => {
-  return (
-    <>
-    <NavMobile/>
-    <NavDesktop/>
-
-    </>
-    )
+	return (
+		<div className="navbarContainer">
+			<NavMobile />
+		</div>	
+	)
 }
 
 export default Nav

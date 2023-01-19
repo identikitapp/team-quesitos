@@ -1,7 +1,5 @@
 import { useState } from "react"
-import Coments from "../../components/coments/Coments"
-import User from "../../components/nav/User"
-import Nav from "../../components/nav/nav"
+import Nav from "../../components/nav/Nav"
 
 const Profile = () => {
 
@@ -19,8 +17,6 @@ const Profile = () => {
 
     return (
         <div className="profileContainer">
-            <User/>
-            <Coments/>
             <Nav/>
         </div>
     )
