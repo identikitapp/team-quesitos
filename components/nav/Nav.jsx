@@ -5,6 +5,7 @@ const Nav = () => {
 	return (
 		<div className="navbarContainer">
 			<NavMobile />
+      <NavDesktop />
 		</div>	
 	)
 }

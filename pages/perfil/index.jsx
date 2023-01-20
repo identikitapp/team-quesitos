@@ -1,11 +1,15 @@
 import { useState } from "react"
-import Nav from "../../components/nav/Nav"
+import Coments from "../../components/coments/Coments"
+import { useUserContext } from "../../context/user"
 
 const Profile = () => {
 
-    // const [publications, setPublications] = useState([dataTest1, dataTest1, dataTest1, dataTest1])
+
+
+    const { user } = useUserContext()
     const [publications, setPublications] = useState([])
     
+
     const [seePost, setSeePost] = useState([null, null])
     const [seeImage, setSeeImage] = useState(false)
 
@@ -17,7 +21,13 @@ const Profile = () => {
 
     return (
         <div className="profileContainer">
-            <Nav/>
+
+            
+
+  <Coments/>
+        
+
+            <Coments />
         </div>
     )
 }
