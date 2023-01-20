@@ -34,7 +34,6 @@ const Feed = () => {
 
     return (
         <div className="feedContainer">
-            <Nav/>
             <NewPost />
             <Post data={dataTest1} />
             <Post data={dataTest2} />

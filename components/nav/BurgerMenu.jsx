@@ -13,18 +13,19 @@ const BurgerMenu = () => {
 
         if(currentTheme === 'dark') {
             return (
-                <>
-                <TbMoon onClick={()=>setTheme('light')}>cambio</TbMoon>
-                <h6>Oscuro</h6>
-                </>
+                <div className='vista'>
+                    <i><TbMoon onClick={()=>setTheme('light')}></TbMoon> </i>
+                    <h6>Oscuro</h6>
+                </div>
+                
             )
         }
         else{
             return (
-                <>
-                <BsSun onClick={()=>setTheme('dark')}>cambio2</BsSun>
+                <div className='vista'>
+                <i><BsSun onClick={()=>setTheme('dark')}></BsSun> </i>
                 <h6>Claro</h6>
-                </>
+                </div>
             )
         }
     }
@@ -36,9 +37,9 @@ const BurgerMenu = () => {
                     <i><FiSettings /></i>
                     <h6>Ajustes</h6>
                 </div>
-                <div className='vista'>
+                
                     {renderThemeChange()}
-                </div>
+                
                 <div className='salir'>
                     <i><BiExit /></i>
                     <h6> Salir </h6>

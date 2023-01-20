@@ -1,6 +1,6 @@
-.navDesktop{
+div.navDesktop{
     
-.nav{
+div.nav{
     margin-top: 40px;
    
 }
@@ -19,7 +19,7 @@ position: fixed;
 width: 200px;
 height: 100%;
    
-.home{
+div.home{
     margin-top: 50px;
 
     i{    
@@ -38,7 +38,7 @@ height: 100%;
         top: 5px;
     }
 }
-.searchNav{
+div.searchNav{
     
     margin-top: 50px;
 
@@ -56,7 +56,7 @@ height: 100%;
         top: 5px;
     }
 }
-.addPublication{
+div.addPublication{
     margin-top: 50px;
 
     i{
@@ -73,7 +73,7 @@ height: 100%;
         top: 5px;
     }
 }
-.profile{
+div.profile{
     margin-top: 60px;
     :hover{
         transition:0.5s;
@@ -97,7 +97,9 @@ height: 100%;
  
  
 }
-.burger{
+div.burger{
+   position: relative;
+   left: 20px;
     @include mobile{
         display: none;
     }
@@ -118,7 +120,7 @@ height: 100%;
         left: 50px;
         bottom: 30px;
     }
-    .arrow{
+    i.arrow{
         position: relative;
         left: 60px;
     }

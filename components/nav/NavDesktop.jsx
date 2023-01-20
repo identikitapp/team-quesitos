@@ -17,20 +17,19 @@ import { AiOutlineArrowUp } from 'react-icons/ai';
  
 
 const NavDesktop = () => {
-  const [Mas, setMas] = useState(<GiHamburgerMenu/>)
-  const [BurgerMenuComponent, setBurgerMenuComponent] = useState(<BurgerMenu/>)
-  const [Display, setDisplay] = useState('')
-  const [displayArrow, setDisplayArrow] = useState('none')
+  const [Display, setDisplay] = useState(true)
+  const [Visible, setVisible] = useState('none')
   const { user } = useUserContext()
-  const handleClick = () => {
-    setMas(BurgerMenuComponent)
-    setDisplay('none')
-    setDisplayArrow('')
-  }
-  const hidenBurger = () => {
-    setBurgerMenuComponent(Mas)
+
+  const hidenMenu = () => {
+    setVisible('none')
+    setDisplay(!Display)
   }
 
+  const handleDisplay = () => {
+    setDisplay(!Display)
+    setVisible('')
+  }
   return (
     <>
       <div className='navDesktop'>
@@ -66,25 +65,26 @@ const NavDesktop = () => {
           </div>
 
 
+      <div className="burger">
+        {
+          Display ?  <i onClick={handleDisplay}><GiHamburgerMenu/></i> : <BurgerMenu/>
+        }
+      <div>
+      <i  onClick={hidenMenu} className='arrow'><AiOutlineArrowUp/></i>
+      </div>
+      <style jsx>
+        {
+          `
+          .arrow {
+            display: ${Visible};
+          } 
+        `
+        }
+      </style>
+      </div>
         </div>
       </div>
-      <div className="burger">
-        <i onClick={handleClick}>{Mas}</i>
-        <h3 className='display'>Mas</h3>
-      <div>
-      <i onClick={hidenBurger} className='arrow'><AiOutlineArrowUp/></i>
-      </div>
-      </div>
-      <style onClick={handleClick} jsx>
-      {`
-      .display{
-        display: ${Display};
-      }
-      .arrow{
-        display: ${displayArrow};
-      }
-      `}
-      </style>
+      
       
     </>
 
