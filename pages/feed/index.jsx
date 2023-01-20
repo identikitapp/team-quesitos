@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-import Nav from "../../components/nav/nav"
->>>>>>> ramaSimon
-import Post from "../../components/Post/Post"
+
+import Nav from "../../components/nav/Nav"
+ import Post from "../../components/Post/Post"
 import { useUserContext } from "../../context/user"
 import testImg1 from "../../public/testImg1.png"
 
@@ -26,20 +23,15 @@ const Publications = ()=> {
     )
 }
 
-=======
->>>>>>> 316d12fd2ad0de010bd5bcc40d31bdfcc1856643
 const Feed = () => {
 
     const { user } = useUserContext()
 
     return (
         <div className="feedContainer">
-<<<<<<< HEAD
-
-=======
             <Nav/>
-            <Publications />
->>>>>>> ramaSimon
+            {/* <Publications /> */}
+
         </div>
     )
 }

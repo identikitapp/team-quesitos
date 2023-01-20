@@ -1,0 +1,27 @@
+.burgMenu{
+    i{
+        color: $icono;
+    }
+    h6{
+        margin-left: 20px;
+    }
+    display: flex;
+    flex-direction:column;
+    .ajustes{
+        i{
+            color: $icono !important;
+        }
+        display: flex;
+        flex-direction: row;
+       
+    }
+    .vista{
+        display: flex;
+        flex-direction: row;
+    }
+    .salir{
+        display: flex;
+        flex-direction: row;
+    }
+    
+}

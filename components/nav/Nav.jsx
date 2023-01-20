@@ -5,9 +5,8 @@ import NavDesktop from './NavDesktop'
 const Nav = () => {
   return (
     <>
-    <NavMobile/>
-    <NavDesktop/>
-
+  <NavMobile/>
+  <NavDesktop/> 
     </>
     )
 }

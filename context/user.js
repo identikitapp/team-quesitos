@@ -4,11 +4,7 @@ import { useCookies } from "react-cookie"
 const UserContext = createContext();
 
 export function UserProvider({ children }) {
-<<<<<<< HEAD
     const [user, setUser] = useState({ id: "", username: "" })
-=======
-    const [user, setUser] = useState(null)
->>>>>>> ramaSimon
     // Accedo a las cookies enviadas en el middleware
     const [cookie, setCookie] = useCookies()
     
