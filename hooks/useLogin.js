@@ -49,8 +49,8 @@ const useLogin = () => {
                 setLoader(false)
                 return setError({ error: true, message: res.message })
             }
-             // JWT
-            document.cookie = 'token=' + res.token + '; max-age=' + (60 * 15) + '; path=/; samesite=strict'
+            // JWT
+            document.cookie = 'token=' + res.token + '; path=/; samesite=strict';
             setUpdate(!update)
             return navigate.push('/feed')
         }).catch(err => {
