@@ -1,8 +1,9 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['m.media-amazon.com'],
+    domains: [process.env.API_HOST],
   }
 }
 
