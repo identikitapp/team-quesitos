@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { createPost } from "../services/post"
 
-const useNewPost = () => {
+const useNewPost = (update, setUpdate) => {
 	const [length, setLength] = useState(0) 
 	const [error, setError] = useState({ error: null })
 	const [loader, setLoader] = useState(false)
@@ -31,6 +31,7 @@ const useNewPost = () => {
 					setLoader(false)
 					return setError({ error: true, message: res.message ? res.message : res.error })
 				}
+				setUpdate(!update)
 				return clearAll(ev)
 			}).catch(error => {
 				console.log(error)

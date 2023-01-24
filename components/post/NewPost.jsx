@@ -4,9 +4,9 @@ import Loader from "../Loader"
 import Image from "next/image"
 import uploadImg from "../../public/upload.png"
 
-const NewPost = () => {
+const NewPost = ({ update, setUpdate }) => {
 	
-	const { error, loader, length, setLength, onSubmitHandler } = useNewPost()
+	const { error, loader, length, setLength, onSubmitHandler } = useNewPost(update, setUpdate)
 	const inputFileRef = useRef()
 
 	let buttonValue = loader ? <Loader width={18} height={18} /> : "Publicar"
