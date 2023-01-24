@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { likePost } from '../../services/post';
+import { formatDifTime } from '../../utilities/times';
 import Image from 'next/image';
 import likeImg from '../../public/like.png';
 import likeFillImg from '../../public/likeFill.png';
@@ -13,25 +14,25 @@ const Post = ({ data, userId }) => {
 	const [like, setLike] = useState(data.likes.includes(userId))
 	const [countLikes, setCountLikes] = useState(data.likes.length)
 	const [loading, setLoading] = useState(false)
-	
+
 	let names = data.owner.name ? (data.owner.lastname ? data.owner.name + " " + data.owner.lastname : data.owner.name) : (data.owner.lastname ? data.owner.lastname : "")
 	let profileImage = data.owner.image ? (API_URL + data.owner.image) : profileImg
 	let usernameStyles = names ? {} : {fontSize: '1.1rem'}
 	let isLike = like ? likeFillImg : likeImg
+	let time = formatDifTime(data.createdAt)
 	
 	const onLikeHandler = ()=> {
 		if (!loading) {
 			setLoading(true)
 			let token = document.cookie.replace('token=', '')
-			likePost(data._id, token).then(res => {
-				if (res.isLike) {
-					setCountLikes(countLikes => countLikes + 1)
-				} else {
-					setCountLikes(countLikes => countLikes - 1)
-				}
-				setLike(!like)
-				setLoading(false)
-			}).catch(error => {
+			if (!like) {
+				setCountLikes(countLikes => countLikes + 1)
+			} else {
+				setCountLikes(countLikes => countLikes - 1)
+			}
+			setLike(!like)
+			likePost(data._id, token).then(res => setLoading(false))
+			.catch(error => {
 				console.log(error)
 				setLoading(false)
 			})
@@ -45,7 +46,7 @@ const Post = ({ data, userId }) => {
 				<div className='info' >
 					{names && <span className="names">{names}</span>}
 					<span style={usernameStyles} className="username">{data.owner.username}</span>
-					<span className='date'>{data.createdAt.slice(0, 10)}</span>
+					<span className='date'>{time}</span>
 				</div>
 				<div className="delete">
 					<div></div>
