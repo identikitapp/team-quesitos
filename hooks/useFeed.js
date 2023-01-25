@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { getPost } from "../services/post"
+import { getToken } from "../utilities/getToken"
 
 const useFeed = () => {
     const [page, setPage] = useState(0)
@@ -46,7 +47,7 @@ const useFeed = () => {
     // Este useEffect trae los primeros posteos al inicio y se vuelve a ejecutar en caso de hacer un nuevo posteo
     // Eso es para mostrar el nuevo posteo del usuario despues de que lo haga
     useEffect(()=> {
-        let token = document.cookie.replace('token=', '')
+        let token = getToken()
         // Solo trae los primeros 10 posteos
         let unsub = ()=> {
             getPost(token, 0).then(res => {
@@ -64,7 +65,7 @@ const useFeed = () => {
     // La primer condicion es para evitar re-render con el useEffect anterior y para evitar una doble peticion al inicio
     useEffect(()=> {
         if (page !== 0 && docs.length > 0) {
-            let token = document.cookie.replace('token=', '')
+            let token = getToken()
             // Muestra los ya cargados + los nuevos
             let unsub = ()=> {
                 getPost(token, page).then(res => {

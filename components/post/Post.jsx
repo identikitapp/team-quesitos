@@ -6,6 +6,7 @@ import likeImg from '../../public/like.png';
 import likeFillImg from '../../public/likeFill.png';
 import commentImg from '../../public/comment.png';
 import profileImg from '../../public/profile.png';
+import { getToken } from '../../utilities/getToken';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -24,7 +25,7 @@ const Post = ({ data, userId }) => {
 	const onLikeHandler = ()=> {
 		if (!loading) {
 			setLoading(true)
-			let token = document.cookie.replace('token=', '')
+			let token = getToken()
 			if (!like) {
 				setCountLikes(countLikes => countLikes + 1)
 			} else {
