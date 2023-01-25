@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { createPost } from "../services/post"
+import { getToken } from "../utilities/getToken"
 
 const useNewPost = (update, setUpdate) => {
 	const [length, setLength] = useState(0) 
@@ -17,7 +18,7 @@ const useNewPost = (update, setUpdate) => {
 
 	const onSubmitHandler = (ev)=> {
 		ev.preventDefault()
-		let [token, content, image] = [document.cookie.replace('token=', ''), ev.target[1].value, ev.target[0].files[0]]
+		let [token, content, image] = [getToken(), ev.target[1].value, ev.target[0].files[0]]
 		
         if (content || image) {
 			if (image && (image.size / 1024 / 1024) > 3) {
