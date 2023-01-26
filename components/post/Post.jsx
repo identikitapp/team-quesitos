@@ -32,11 +32,12 @@ const Post = ({ data, userId }) => {
 				setCountLikes(countLikes => countLikes - 1)
 			}
 			setLike(!like)
-			likePost(data._id, token).then(res => setLoading(false))
-			.catch(error => {
-				console.log(error)
-				setLoading(false)
-			})
+			likePost(data._id, token)
+				.then(res => setLoading(false))
+				.catch(error => {
+					console.log(error)
+					setLoading(false)
+				})
 		}
 	}
 

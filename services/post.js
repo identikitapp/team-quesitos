@@ -6,8 +6,8 @@ export const createPost = async (content, image, token)=> {
     myHeaders.append("auth-token", token);
     
     let formdata = new FormData(); 
-    if (content) formdata.append("content", content);
-    if (image) formdata.append("image", image, image.name);
+    formdata.append("content", content);
+    formdata.append("image", image, image ? image.name : "");
 
     let requestOptions = {
         method: 'POST',
