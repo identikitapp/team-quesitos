@@ -7,7 +7,7 @@ export const createPost = async (content, image, token)=> {
     
     let formdata = new FormData(); 
     formdata.append("content", content);
-    formdata.append("image", image, image ? image.name : "");
+    if (image) formdata.append("image", image);
 
     let requestOptions = {
         method: 'POST',
