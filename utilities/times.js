@@ -12,7 +12,7 @@ export const formatDifTime = (date)=> {
 	let toHour = Math.floor(dif / 60)
 	let toDay = Math.floor(dif / 1440)
 	let toWeek = Math.floor(toDay / 7)
-	if (dif === 0) {
+	if (dif < 1) {
 		return 'Hace un instante'
 	} else if (dif === 1) {
 		return 'Hace 1 minuto'
