@@ -4,7 +4,7 @@ import { useRouter } from "next/router"
 import { userLogin, userRegister } from "../services/user"
 import { useUserContext } from "../context/user"
 
-const useLogin = () => {
+const useLogin = ({ setSeePassword }) => {
 
     const { update, setUpdate } = useUserContext()
     // Tipo de formulario (login o registro, true o false)
@@ -63,6 +63,7 @@ const useLogin = () => {
     const onSetFormTypeHandler = ()=> {
         setError({ error: null })   
         setFormType(!formType)
+        setSeePassword(false)
     }
 
     return {

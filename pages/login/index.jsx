@@ -11,7 +11,7 @@ import Loader from "../../components/Loader"
 const Login = () => {
 
     const [seePassword, setSeePassword] = useState(false)
-    const { error, loader, formType, onSetFormTypeHandler, onRegisterHandler, onAuthHandler } = useLogin()
+    const { error, loader, formType, onSetFormTypeHandler, onRegisterHandler, onAuthHandler } = useLogin({ setSeePassword })
 
     // Condiciones entre login y registro
     let title = formType ? "Registro" : "Inicio de sesión"
@@ -50,10 +50,12 @@ const Login = () => {
                 </label>}
 
                 <label className="password">
-                    <div className={"bar " + seePasswordClass}></div>
                     <Image src={passwordImg} alt="Contraseña" width={22} height={22} />
                     <input required type={passwordType} name="password" placeholder="Contraseña" />
-                    <Image className={seePasswordClass} onClick={(ev)=> onSeePasswordHandler(ev)} src={seePasswordImg} alt="Ver contraseña" width={22} height={22}/>
+                    <div onClick={(ev)=> onSeePasswordHandler(ev)} className={seePasswordClass}>
+                        <Image src={seePasswordImg} alt="Ver contraseña" width={22} height={22}/>
+                        <div className="bar"/>
+                    </div>
                 </label>
 
                 {formType && <label>

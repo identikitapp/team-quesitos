@@ -75,7 +75,6 @@ div.loginContainer {
             padding: 0.5rem .6rem .5rem .4rem;
             gap: 0.3rem;
             background: #fff;
-
             
             input {
                 border: none;
@@ -106,26 +105,30 @@ div.loginContainer {
                 transition: all 100ms linear;
             }
 
-            img.check {
-                opacity: 0.9;
-            }
-
-            div.bar {
-                position: absolute;
-                left: calc(100% - 2.2rem);
-                right: .8rem;
-                bottom: calc(100%/2 - 1px);
-                height: 2px;
-                background-color: #c06363;
-                transform: rotate(-45deg);
-                border-radius: 4px;
+            div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                opacity: 0.8;
+                transition: opacity 50ms linear;
                 cursor: pointer;
-                opacity: 0.9;
-                transition: all 50ms linear;
+    
+                div.bar {
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    background-color: #c06363;
+                    transform: rotate(-45deg);
+                }
             }
 
-            div.bar.check {
-                opacity: 0;
+            div.check {
+                opacity: 1;
+
+                div.bar {
+                    opacity: 0;
+                }
             }
         }
 
