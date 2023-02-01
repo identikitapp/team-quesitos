@@ -2,7 +2,6 @@
 import { useUserContext } from '../../context/user'
 import Link from 'next/link'
 import Image from 'next/image'
-import logo from '../../public/title.png'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { AiFillHome } from 'react-icons/ai';
 import { MdOutlineAddBox } from 'react-icons/md'
@@ -12,9 +11,6 @@ import 'animate.css';
 import { useState } from 'react'
 import BurgerMenu from './BurgerMenu'
 import { AiOutlineArrowUp } from 'react-icons/ai';
-
-
- 
 
 const NavDesktop = () => {
   const [Display, setDisplay] = useState(true)
@@ -34,7 +30,7 @@ const NavDesktop = () => {
     <>
       <div className='navDesktop'>
         <Link href='/'>
-          <Image width={150} height={25} src={logo} alt='logo'></Image>
+          <Image width={150} height={25} src="/assets/title.png" alt='logo'></Image>
         </Link>
         <div className='nav'>
           <div className="home">

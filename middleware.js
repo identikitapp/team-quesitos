@@ -31,5 +31,5 @@ export async function middleware(req) {
 
 export const config = {
     // Ignora las rutas default de next
-    matcher: '/((?!api|_next/static|_next/image|favicon.ico).*)'
+    matcher: '/((?!api|_next/static|_next/image|favicon.ico|assets).*)'
 }

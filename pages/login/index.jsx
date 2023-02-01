@@ -1,10 +1,5 @@
 import { useState } from "react"
-import logoImg from "../../public/logo.svg"
 import useLogin from "../../hooks/useLogin"
-import usernameImg from "../../public/login/username.png"
-import emailImg from "../../public/login/email.png"
-import passwordImg from "../../public/login/password.png"
-import seePasswordImg from "../../public/login/seePassword.png"
 import Image from "next/image"
 import Loader from "../../components/Loader"
 
@@ -35,31 +30,31 @@ const Login = () => {
         <div className="loginContainer">
             <div className="background"></div>
             <form onSubmit={(ev)=> formType ? onRegisterHandler(ev) : onAuthHandler(ev)}>
-                <Image style={logoStyle} priority className="logo" width={96} height={96} src={logoImg} alt="Active Moments" />
+                <Image style={logoStyle} priority className="logo" width={96} height={96} src="/assets/logo.svg" alt="Active Moments" />
                 <h3>{title}</h3>
                 {error.error && <p>• {error.message}</p>}
 
                 <label>
-                    <Image src={usernameImg} alt="Nombre de usuario" width={20} height={20} />
+                    <Image src="/assets/login/username.png" alt="Nombre de usuario" width={20} height={20} />
                     <input required type="text" name="username" placeholder={usernamePlaceholder} />
                 </label>
 
                 {formType && <label>
-                    <Image src={emailImg} alt="Email" width={22} height={22} />
+                    <Image src="/assets/login/email.png" alt="Email" width={22} height={22} />
                     <input required type="email" name="email" placeholder="Email" />
                 </label>}
 
                 <label className="password">
-                    <Image src={passwordImg} alt="Contraseña" width={22} height={22} />
+                    <Image src="/assets/login/password.png" alt="Contraseña" width={22} height={22} />
                     <input required type={passwordType} name="password" placeholder="Contraseña" />
                     <div onClick={(ev)=> onSeePasswordHandler(ev)} className={seePasswordClass}>
-                        <Image src={seePasswordImg} alt="Ver contraseña" width={22} height={22}/>
+                        <Image src="/assets/login/seePassword.png" alt="Ver contraseña" width={22} height={22}/>
                         <div className="bar"/>
                     </div>
                 </label>
 
                 {formType && <label>
-                    <Image src={passwordImg} alt="Contraseña" width={22} height={22} />
+                    <Image src="/assets/login/password.png" alt="Contraseña" width={22} height={22} />
                     <input required type={passwordType} name="confirmPassword" placeholder="Confirmar contraseña" />
                 </label>}
 

@@ -2,8 +2,6 @@ import { useRef } from "react"
 import useNewPost from "../../hooks/useNewPost"
 import Loader from "../Loader"
 import Image from "next/image"
-import uploadImg from "../../public/post/upload.svg"
-import profileImg from "../../public/profile.png"
 import { useUserContext } from "../../context/user"
 
 const NewPost = ({ update, setUpdate }) => {
@@ -13,7 +11,7 @@ const NewPost = ({ update, setUpdate }) => {
 	const inputFileRef = useRef()
 
 	const buttonValue = loader ? <Loader width={18} height={18} /> : "Publicar"
-	const userImage = user.image ? user.image : profileImg
+	const userImage = user.image ? user.image : "/assets/profile.png"
 
 	return (
 		<form onSubmit={(ev)=> onSubmitHandler(ev)} className="newPostForm">
@@ -25,7 +23,7 @@ const NewPost = ({ update, setUpdate }) => {
 			</div>
 			<div className="buttons">
 				<span>{length}/200</span>
-				<Image onClick={()=> inputFileRef.current.click()} width='30' height='30' src={uploadImg} alt='Subir image' />
+				<Image onClick={()=> inputFileRef.current.click()} width='30' height='30' src="/assets/post/upload.svg" alt='Subir image' />
 				<button type="submit">{buttonValue}</button>
 			</div>
 		</form>
