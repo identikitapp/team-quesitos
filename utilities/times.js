@@ -10,7 +10,7 @@ const getDifTime = (date)=> {
 export const formatDifTime = (date)=> {
     let dif = getDifTime(date)
 	let toHour = Math.floor(dif / 60)
-	let toDay = Math.floor(dif / 1440)
+	let toDay = Math.floor(toHour / 24)
 	let toWeek = Math.floor(toDay / 7)
 	if (dif < 1) {
 		return 'Hace un instante'
@@ -20,11 +20,11 @@ export const formatDifTime = (date)=> {
 		return 'Hace ' + dif + ' minutos'
 	} else if (toHour >= 1 && toHour < 2) {
 		return 'Hace 1 hora'
-	} else if (toHour >= 2) {
+	} else if (toHour >= 2 && toHour < 24) {
 		return 'Hace ' + toHour + ' horas'
 	} else if (toDay >= 1 && toDay < 2) {
 		return 'Hace 1 dia'
-	} else if (toDay >= 2) {
+	} else if (toDay >= 2 && toDay < 7) {
 		return 'Hace ' + toDay + ' dias'
 	} else if (toWeek >= 1 && toWeek < 2) {
 		return 'Hace 1 semana'
