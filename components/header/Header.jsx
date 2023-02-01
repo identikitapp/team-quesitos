@@ -3,11 +3,10 @@ import { useUserContext } from '../../context/user'
 import useFeed from '../../hooks/useFeed'
 import Post from '../post/Post'
 
-const Header = () => {
-
+const Header = ({data}) => {
+  const API_URL = process.env.NEXT_PUBLIC_API_URL 
   const {user} = useUserContext()
   const { update, setUpdate, visor, docs } = useFeed()
-
   return (
     <div className="headerContain">
         <div className="headerImg">

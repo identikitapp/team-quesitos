@@ -7,7 +7,7 @@ import { getToken } from '../../utilities/getToken';
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 const Post = ({ data, userId }) => {
-	
+	const [deleted, setDeleted] = useState(true)
 	const [like, setLike] = useState(data.likes.includes(userId))
 	const [countLikes, setCountLikes] = useState(data.likes.length)
 	const [loading, setLoading] = useState(false)
@@ -15,9 +15,13 @@ const Post = ({ data, userId }) => {
 	let names = data.owner.name ? (data.owner.lastname ? data.owner.name + " " + data.owner.lastname : data.owner.name) : (data.owner.lastname ? data.owner.lastname : "")
 	let profileImage = data.owner.image ? (API_URL + data.owner.image) : "/assets/profile.png"
 	let usernameStyles = names ? {} : {fontSize: '1.1rem'}
-	let isLike = like ? "/assets/post/muscle.png" : "/assets/post/muscle.png"
+	let isLike = like ? "/assets/post/muscleLike.png" : "/assets/post/muscleDisLike.png"
 	let time = formatDifTime(data.createdAt)
-	
+
+	const handleDeleted = () => {
+		setDeleted(!deleted)
+	}
+
 	const onLikeHandler = ()=> {
 		if (!loading) {
 			setLoading(true)
@@ -46,10 +50,13 @@ const Post = ({ data, userId }) => {
 					<span style={usernameStyles} className="username">{data.owner.username}</span>
 					<span className='date'>{time}</span>
 				</div>
-				<div className="delete">
+				{
+					deleted ? (<Image onClick={handleDeleted} width='30' height='30' src="/assets/post/tresPuntos.png"></Image>) : <div onClick={handleDeleted} className="delete">
 					<div></div>
 					<div></div>
 				</div>
+				}
+
 			</div>
 			{data.content && <p>{data.content}</p>}
 			{data.image && <Image width='300' height='300' className='publication' alt='Usuario' src={API_URL + data.image} />}
