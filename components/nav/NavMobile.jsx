@@ -11,7 +11,7 @@ const NavMobile = () => {
     </Link> 
       </div>
     <div className='logo'>
-    <Link href={'/'}> <Image className='logoImg' width={40} height={40} src="/assets/logo.svg" alt='user' /></Link>
+    <Link href={'/'}> <Image priority className='logoImg' width={40} height={40} src="/assets/logo.svg" alt='user' /></Link>
         <Link href={'/'}> <Image className='logoName' width={100} height={15} src="/assets/title.png" alt='user' /></Link>
     </div>
   <div className='name'>

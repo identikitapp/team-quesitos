@@ -2,11 +2,12 @@ div.publicationContainer {
     display: grid;
     grid-template-columns: auto;
     grid-auto-rows: min-content;
-    width: calc(90% - 2rem - 2px);
+    width: 90%;
     padding: 2rem;
     border-radius: 8px;
     gap: 1rem;
     position: relative;
+    margin: 0px auto;
     box-shadow: 1px 1px 8px 1px rgba(34, 34, 34, 0.034);
     border: 2px solid $borde;
     margin-bottom: 1rem;

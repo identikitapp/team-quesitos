@@ -49,7 +49,7 @@ const useFeed = () => {
     useEffect(()=> {
         let token = getToken()
         // Solo trae los primeros 10 posteos
-        console.log(token)
+        // console.log(token)
         let unsub = ()=> {
             getPost(token, 0).then(res => {
                 setDocs(res.data)

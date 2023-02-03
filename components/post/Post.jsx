@@ -51,7 +51,7 @@ const Post = ({ data, userId }) => {
 					<span className='date'>{time}</span>
 				</div>
 				{
-					deleted ? (<Image onClick={handleDeleted} width='30' height='30' src="/assets/post/tresPuntos.png"></Image>) : <div onClick={handleDeleted} className="delete">
+					deleted ? (<Image onClick={handleDeleted} width='30' height='30' src="/assets/post/tresPuntos.png" alt='mas informacion'></Image>) : <div onClick={handleDeleted} className="delete">
 					<div></div>
 					<div></div>
 				</div>
