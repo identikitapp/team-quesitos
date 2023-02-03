@@ -1,7 +1,13 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useUserContext } from '../../context/user'
 
 const NavMobile = () => {
+
+  const {user} = useUserContext()
+
+  let image = user.image ? user.image : <Image className='logoUser' priority width={35} height={35} src="/assets/profile.png" alt='user'></Image>
+
 
   return (
     <div className='user'>
@@ -16,7 +22,7 @@ const NavMobile = () => {
     </div>
   <div className='name'>
     <Link href='/'>
-    <Image className='logoUser' width={28.86} height={28.43} src="/assets/user2.png" alt='logo usuario' />
+    {image}
     </Link> 
   </div>
     </div>
