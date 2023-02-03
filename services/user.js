@@ -1,9 +1,13 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
+const initialOptions = {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'}
+}
+
 export const userRegister = async (username, email, password, confirmPassword)=> {
-    let options = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+    const options = {
+        ...initialOptions,
         body: JSON.stringify({
             username,
             email,
@@ -12,22 +16,27 @@ export const userRegister = async (username, email, password, confirmPassword)=>
         })
     };
     
-    return await fetch(API_URL + '/auth/register', options).then(response => response.json())
+    let userData;
+    await fetch(API_URL + '/auth/register', options).then(res => res.json()).then(res => userData = res).catch(error => userData = { promiseError: error });
+    return userData;
 }
 
 export const userLogin = async (username, password) => {
-    let options = {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+    const options = {
+        ...initialOptions,
         body: JSON.stringify({
             username,
             password,
         })
     };
 
-    return await fetch(API_URL + '/auth/login', options).then(response => response.json())
+    let userData;
+    await fetch(API_URL + '/auth/login', options).then(res => res.json()).then(res => userData = res).catch(error => userData = { promiseError: error });
+    return userData;
 }
 
 export const getUser = async ()=> {
-    return await fetch("/api/user").then(response => response.json())
+    let userData;
+    await fetch("/api/user").then(res => res.json()).then(res => userData = res ).catch(error => userData = { promiseError: error });
+    return userData;
 }

@@ -8,10 +8,12 @@ export function UserProvider({ children }) {
 	const [update, setUpdate] = useState(false)
 
 	useEffect(()=> {
-		let unsub = ()=> {
-			getUser().then(res => { if (!res.error) setUser(res) })
+		let unsub = async ()=> {
+			const userData = await getUser();
+			if (!userData.error) setUser(userData);
+			else console.log(userData.error);
 		}
-		return unsub()
+		return ()=> unsub();
 	}, [update])
 
   	let values = { user, setUser, update, setUpdate }

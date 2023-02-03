@@ -14,7 +14,7 @@ const useLogin = ({ setSeePassword }) => {
     const navigate = useRouter()
 
     // Registro
-    const onRegisterHandler = (ev)=> {
+    const onRegisterHandler = async (ev)=> {
         ev.preventDefault()
         let [username, email, password, confirmPassword] = [ev.target[0].value.toLowerCase(), ev.target[1].value.toLowerCase(), ev.target[2].value, ev.target[3].value]
         
@@ -24,40 +24,31 @@ const useLogin = ({ setSeePassword }) => {
         
         // Registro
         setLoader(true)
-        userRegister(username, email, password, confirmPassword).then(res => {
-            if (res.error) return setError({ error: true, message: res.message })
-            setFormType(false)
-            setLoader(false)
-            return setError({ error: false })
-        }).catch(err => {
-            console.log(err)
-            setLoader(false)
-            return setError({ error: true, message: "Ocurrio un error, intente de nuevo mas tarde" })
-        })
+        const user = await userRegister(username, email, password, confirmPassword);
+        setLoader(false)
 
+        if (user.error) return setError({ error: true, message: user.message })
+        else if (user.promiseError) return setError({ error: true, message: 'Ocurrio un error, intente de nuevo mas tarde.' })
+        setFormType(false)
+        return setError({ error: false })
     }
 
     // Login
-    const onAuthHandler = (ev)=> {
+    const onAuthHandler = async (ev)=> {
         ev.preventDefault()
         let [username, password] = [ev.target[0].value.toLowerCase(), ev.target[1].value.toLowerCase()]
 
         // Inicio de sesión
         setLoader(true)
-        userLogin(username, password).then(res => {
-            if (res.error) {
-                setLoader(false)
-                return setError({ error: true, message: res.message })
-            }
-            // JWT
-            document.cookie = 'token=' + res.token + '; path=/; samesite=strict';
-            setUpdate(!update)
-            return navigate.push('/feed')
-        }).catch(err => {
-            console.log(err)
-            setLoader(false)
-            return setError({ error: true, message: 'Ocurrio un error, intente de nuevo mas tarde' })
-        })
+        const user = await userLogin(username, password)
+        setLoader(false)
+
+        if (user.error) return setError({ error: true, message: user.message })
+        else if (user.promiseError) return setError({ error: true, message: 'Ocurrio un error, intente de nuevo mas tarde' })
+        // JWT
+        document.cookie = 'token=' + user.token + '; path=/; samesite=strict';
+        setUpdate(!update)
+        return navigate.push('/feed')
     }
 
     const onSetFormTypeHandler = ()=> {

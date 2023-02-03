@@ -32,6 +32,7 @@ export const getPost = async (token, page)=> {
 
 export const likePost = async (postId, token) => {
     let myHeaders = new Headers();
+    console.log(myHeaders)
     myHeaders.append("auth-token", token);
     myHeaders.append("content-type", "application/json")
 
