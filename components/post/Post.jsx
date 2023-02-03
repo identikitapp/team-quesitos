@@ -7,7 +7,7 @@ import { getToken } from '../../utilities/getToken';
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 const Post = ({ data, userId }) => {
-	const [deleted, setDeleted] = useState(true)
+	const [open, setOpen] = useState(false);
 	const [like, setLike] = useState(data.likes.includes(userId))
 	const [countLikes, setCountLikes] = useState(data.likes.length)
 	const [loading, setLoading] = useState(false)
@@ -18,8 +18,8 @@ const Post = ({ data, userId }) => {
 	let isLike = like ? "/assets/post/muscleLike.png" : "/assets/post/muscleDisLike.png"
 	let time = formatDifTime(data.createdAt)
 
-	const handleDeleted = () => {
-		setDeleted(!deleted)
+	const onOpenMenuHandler = () => {
+		setOpen(!deleted)
 	}
 
 	const onLikeHandler = ()=> {
@@ -43,23 +43,19 @@ const Post = ({ data, userId }) => {
 
 	return (
 		<div className="publicationContainer">
-			<div className="user">
-				<Image width='64' height='64' src={profileImage} alt="Usuario"/>
-				<div className='info' >
-					{names && <span className="names">{names}</span>}
-					<span style={usernameStyles} className="username">{data.owner.username}</span>
-					<span className='date'>{time}</span>
+			<div className="square">
+				<div className="user">
+					<Image width='56' height='56' src={profileImage} alt="Usuario"/>
+					<div className='info' >
+						{names && <span className="names">{names}</span>}
+						<span style={usernameStyles} className="username">{data.owner.username}</span>
+						<span className='date'>{time}</span>
+					</div>
+					<Image className='menu' onClick={onOpenMenuHandler} width='30' height='30' src="/assets/post/tresPuntos.png" alt='Menu'/>
 				</div>
-				{
-					deleted ? (<Image onClick={handleDeleted} width='30' height='30' src="/assets/post/tresPuntos.png" alt='mas informacion'></Image>) : <div onClick={handleDeleted} className="delete">
-					<div></div>
-					<div></div>
-				</div>
-				}
-
+				{data.content && <p>{data.content}</p>}
+				{data.image && <Image width='300' height='300' className='publication' alt='Usuario' src={API_URL + data.image} />}
 			</div>
-			{data.content && <p>{data.content}</p>}
-			{data.image && <Image width='300' height='300' className='publication' alt='Usuario' src={API_URL + data.image} />}
 			<div className="actions">
 				<div>
 					<Image width='30' height='30' src={isLike} alt='Me gusta' onDoubleClick={(ev) => ev.preventDefault()} onClick={onLikeHandler} />
