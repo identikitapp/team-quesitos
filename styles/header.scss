@@ -1,5 +1,7 @@
 div.headerContain{
     margin-top: 10px;
+    display: grid;
+    
 
     @include tablet{
         display: none;
@@ -44,8 +46,12 @@ div.headerContain{
     }
     
     .public{
-        position: relative;
-        display: flex;
-        flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: auto;
+            grid-auto-rows: min-content;
+            justify-items: center;
+            gap: 0.6rem;
+            padding: 1rem 0 2rem 0;
+        
     }
 }

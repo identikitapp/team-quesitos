@@ -6,7 +6,7 @@ const NavMobile = () => {
 
   const {user} = useUserContext()
 
-  let image = user.image ? user.image : <Image className='logoUser' priority width={35} height={35} src="/assets/profile.png" alt='user'></Image>
+  let image = user.image ? <Image width={78} height={78} src={user.image} className='logoUser' priority> </Image> : <Image className='logoUser' priority width={35} height={35} src="/assets/profile.png" alt='user'></Image>
 
 
   return (
