@@ -15,6 +15,7 @@ const NewPost = ({ update, setUpdate }) => {
 
 	return (
 		<form onSubmit={(ev)=> onSubmitHandler(ev)} className="newPostForm">
+			<h2>Haz una publicación</h2>
 			{error.error && <span className="error">{error.message}</span>}
 			<input ref={inputFileRef} style={{display: "none"}} type="file" name="image" accept="image/*" />
 			<div className="textarea">

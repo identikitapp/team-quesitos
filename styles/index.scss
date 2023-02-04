@@ -45,7 +45,7 @@ button[type="submit"] {
     cursor: pointer;
 }
 
-div.feedContainer {
+div.postList {
     display: grid;
     grid-template-columns: auto;
     grid-auto-rows: min-content;
@@ -59,5 +59,5 @@ div.feedContainer {
 @import "./newPost";
 @import "./navMobile";
 @import "./navDesktop";
-@import "./burgermenu";
-@import "./header";
+@import "./burgerMenu";
+@import "./headerProfile";

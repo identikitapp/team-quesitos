@@ -1,0 +1,51 @@
+div.headerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.2rem 0 1.8rem 0;
+    
+    div.headerImage {
+        background-image: url('../public/assets/header.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        width: 90%;
+        height: 140px;
+        border-radius: 6px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+
+        img.userImage {
+            position: absolute;
+            top: 64%;
+            object-fit: cover;
+            border-radius: 6px;
+            box-shadow: 0 -2px 8px 1px rgba(0, 0, 0, 0.041);
+        }
+    }
+
+    div.user{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        transform: translateY(36px);
+        gap: 0.2rem;
+        color: #222;
+        width: 90%;
+
+        h2, h4 {
+            text-align: center;
+        }
+    }
+
+    .public{
+            display: grid;
+            grid-template-columns: auto;
+            grid-auto-rows: min-content;
+            justify-items: center;
+            gap: 0.6rem;
+            padding: 1rem 0 2rem 0;
+        
+    }
+}

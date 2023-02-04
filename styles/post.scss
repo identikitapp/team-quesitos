@@ -14,6 +14,7 @@ div.publicationContainer {
         border: 2px solid $borde;
         padding: 1rem;
         border-radius: 8px;
+        border-bottom-left-radius: 4px;
 
         div.user {
             display: grid;
@@ -99,8 +100,7 @@ div.publicationContainer {
                         background-color: #e4e4e4;
                         transition: background-color 50ms ease-in;
                         border-radius: 4px;
-                        font-size: 0.9rem;
-                        color: #555;
+                        color: #444;
                         cursor: pointer;
                     }
 
