@@ -1,9 +1,8 @@
-import { useState } from "react"
 import { useUserContext } from "../../context/user"
 import useFeed from "../../hooks/useFeed"
 import HeaderProfile from "../../components/headerProfile/HeaderProfile"
-import Nav from "../../components/nav/Nav"
 import Post from "../../components/post/Post"
+import Navbar from "../../components/navbar/Navbar"
 
 const Profile = () => {
     const { update, setUpdate, visor, docs } = useFeed()
@@ -11,7 +10,7 @@ const Profile = () => {
 
     return (
         <div className="profileContainer">
-            <Nav/>
+            <Navbar />
             <HeaderProfile />        
             <div className="postList">
                 {docs.length > 0 && docs.map(doc => { return <Post key={doc._id} data={doc} userId={user.id} /> })}

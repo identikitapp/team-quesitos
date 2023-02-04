@@ -6,10 +6,9 @@ export default function App({ Component, pageProps }) {
 
   return(
       <ThemeProvider enableSystem={true} attribute="class">
-    <UserProvider>
-
-      <Component {...pageProps} />
-    </UserProvider>
+        <UserProvider>
+          <Component {...pageProps} />
+        </UserProvider>
       </ThemeProvider>
   )
 }

@@ -1,4 +1,3 @@
-
 import { useUserContext } from '../../context/user'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -12,7 +11,7 @@ import { useState } from 'react'
 import BurgerMenu from './BurgerMenu'
 import { AiOutlineArrowUp } from 'react-icons/ai';
 
-const NavDesktop = () => {
+const NavbarDesktop = () => {
   const [Display, setDisplay] = useState(true)
   const [Visible, setVisible] = useState('none')
   const { user } = useUserContext()
@@ -26,6 +25,7 @@ const NavDesktop = () => {
     setDisplay(!Display)
     setVisible('')
   }
+
   return (
     <>
       <div className='navDesktop'>
@@ -88,4 +88,4 @@ const NavDesktop = () => {
   )
 }
 
-export default NavDesktop;
+export default NavbarDesktop;
