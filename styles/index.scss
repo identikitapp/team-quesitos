@@ -15,6 +15,7 @@ $text-color: #b12e2ec4;
 
 body {
     overflow-x: hidden;
+    background-color: #FCFCFC;
 }
 
 div.loader {
@@ -43,6 +44,7 @@ button[type="submit"] {
     font-size: 1rem;
     cursor: pointer;
 }
+
 div.feedContainer {
     display: grid;
     grid-template-columns: auto;

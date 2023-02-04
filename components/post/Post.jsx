@@ -19,7 +19,7 @@ const Post = ({ data, userId }) => {
 	let time = formatDifTime(data.createdAt)
 
 	const onOpenMenuHandler = () => {
-		setOpen(!deleted)
+		setOpen(!open)
 	}
 
 	const onLikeHandler = ()=> {
@@ -45,13 +45,20 @@ const Post = ({ data, userId }) => {
 		<div className="publicationContainer">
 			<div className="square">
 				<div className="user">
-					<Image width='56' height='56' src={profileImage} alt="Usuario"/>
+					<Image width='50' height='50' src={profileImage} alt="Usuario"/>
 					<div className='info' >
 						{names && <span className="names">{names}</span>}
 						<span style={usernameStyles} className="username">{data.owner.username}</span>
 						<span className='date'>{time}</span>
 					</div>
-					<Image className='menu' onClick={onOpenMenuHandler} width='30' height='30' src="/assets/post/tresPuntos.png" alt='Menu'/>
+					<div className="menuContainer">
+						<Image className='menu' onClick={onOpenMenuHandler} width='30' height='30' src="/assets/post/tresPuntos.png" alt='Menu'/>
+						{open && <div className="menu">
+							<div className="arrow"></div>
+							<span>Eliminar</span>
+							<span>Reportar</span>
+						</div>}
+					</div>
 				</div>
 				{data.content && <p>{data.content}</p>}
 				{data.image && <Image width='300' height='300' className='publication' alt='Usuario' src={API_URL + data.image} />}

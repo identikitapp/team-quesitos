@@ -41,8 +41,10 @@ form.newPostForm {
             resize: none;
             color: rgb(80, 80, 80);
             border: 2px solid $primary-color;
-            border-radius: 10px;
+            border-radius: 8px;
             border-bottom-right-radius: 4px;
+            background: none;
+            box-shadow: 1px 1px 8px 1px rgba(34, 34, 34, 0.034) inset;
         }
 
         img {

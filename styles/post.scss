@@ -13,7 +13,7 @@ div.publicationContainer {
         box-shadow: 1px 1px 8px 1px rgba(34, 34, 34, 0.034) inset;
         border: 2px solid $borde;
         padding: 1rem;
-        border-radius: 10px;
+        border-radius: 8px;
 
         div.user {
             display: grid;
@@ -21,7 +21,7 @@ div.publicationContainer {
             align-items: flex-start;
             gap: 0.8rem;
             color: #333;
-            z-index: 1;
+            z-index: 2;
     
             img {
                 object-fit: cover;
@@ -51,8 +51,63 @@ div.publicationContainer {
                 }
             }
     
-            img.menu {
-                cursor: pointer;
+            div.menuContainer {
+                position: relative;
+                z-index: 2;
+
+                img.menu {
+                    cursor: pointer;
+                }
+
+                @keyframes showMenu {
+                    0% {
+                        opacity: 0;
+                        bottom: 110%;
+                    }
+
+                    100% {
+                        opacity: 1;
+                        bottom: 120%;
+                    }
+                }
+
+                div.menu {
+                    position: absolute;
+                    display: flex;
+                    flex-direction: column;
+                    bottom: 120%;
+                    background-color: #e4e4e4;
+                    padding: 6px;
+                    right: 0;
+                    border-radius: 4px;
+                    animation: showMenu 150ms ease-in;
+
+                    div.arrow {
+                        background-color: #e4e4e4;
+                        width: 14px;
+                        height: 10px;
+                        position: absolute;
+                        bottom: -8px;
+                        right: calc(30px/2 - 7px);
+                        transform: rotate(180deg);
+                        clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+                    }
+
+                    span {
+                        white-space: nowrap;
+                        padding: 0.4rem 0.8rem 0.4rem 0.4rem;
+                        background-color: #e4e4e4;
+                        transition: background-color 50ms ease-in;
+                        border-radius: 4px;
+                        font-size: 0.9rem;
+                        color: #555;
+                        cursor: pointer;
+                    }
+
+                    span:hover {
+                        background-color: #d4d4d4;
+                    }
+                }
             }
         }
     
@@ -65,6 +120,7 @@ div.publicationContainer {
             word-wrap: break-word;
             word-break: keep-all;
             font-size: 1.1rem;
+            position: relative;
             z-index: 1;
         }
     
@@ -72,6 +128,7 @@ div.publicationContainer {
             width: 100%;
             height: auto;
             border-radius: 6px;
+            position: relative;
             z-index: 1;
         }
     }
