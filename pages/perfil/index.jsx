@@ -1,12 +1,13 @@
 import { useUserContext } from "../../context/user"
-import useFeed from "../../hooks/useFeed"
+import usePostList from "../../hooks/usePostList"
+import { getUserPost } from "../../services/post"
 import HeaderProfile from "../../components/headerProfile/HeaderProfile"
 import Post from "../../components/post/Post"
 import Navbar from "../../components/navbar/Navbar"
 
 const Profile = () => {
-    const { update, setUpdate, visor, docs } = useFeed()
     const { user } = useUserContext()
+    const { update, setUpdate, visor, docs } = usePostList(getUserPost, user.id)
 
     return (
         <div className="profileContainer">

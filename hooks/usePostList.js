@@ -1,8 +1,7 @@
 import { useEffect, useRef, useState } from "react"
-import { getPost } from "../services/post"
 import { getToken } from "../utilities/getToken"
 
-const useFeed = () => {
+const usePostList = (service, userId) => {
     const [page, setPage] = useState(0)
     const [total, setTotal] = useState(null)
     const [docs, setDocs] = useState([])
@@ -47,29 +46,24 @@ const useFeed = () => {
     // Este useEffect trae los primeros posteos al inicio y se vuelve a ejecutar en caso de hacer un nuevo posteo
     // Eso es para mostrar el nuevo posteo del usuario despues de que lo haga
     useEffect(()=> {
-        let token = getToken()
-        // Solo trae los primeros 10 posteos
-        // console.log(token)
-        let unsub = ()=> {
-            getPost(token, 0).then(res => {
+        const token = getToken()
+        const unsub = ()=> {
+            service({ token, userId: userId ? userId : "", page: 0 }).then(res => {
                 setDocs(res.data)
-                // Guarda el total de posteos, usado para validar la paginacion
                 setTotal(res.total)
-                // Setea la pagina en 0 en caso de que el usuario haya navegado anteriormente
                 setPage(0)
             }).catch(err => console.log(err))
         }
         return unsub()
-    }, [update])
+    }, [update, userId])
 
     // Actualiza los posteos siempre que se cambie de pagina, trae los nuevos y los suma a los ya cargados
     // La primer condicion es para evitar re-render con el useEffect anterior y para evitar una doble peticion al inicio
     useEffect(()=> {
         if (page !== 0 && docs.length > 0) {
-            let token = getToken()
-            // Muestra los ya cargados + los nuevos
-            let unsub = ()=> {
-                getPost(token, page).then(res => {
+            const token = getToken()
+            const unsub = ()=> {
+                service({ token, userId: userId ? userId : "", page }).then(res => {
                     setDocs([...docs, ...res.data])
                     setTotal(res.total)
                 }).catch(err => console.log(err))
@@ -86,4 +80,4 @@ const useFeed = () => {
     }
 }
 
-export default useFeed
+export default usePostList

@@ -1,11 +1,12 @@
 import { useUserContext } from "../../context/user"
-import useFeed from "../../hooks/useFeed"
+import usePostList from "../../hooks/usePostList"
+import { getPost } from "../../services/post"
 import NewPost from "../../components/post/NewPost"
 import Post from "../../components/post/Post"
 
 const Feed = () => {
 
-    const { update, setUpdate, visor, docs } = useFeed()
+    const { update, setUpdate, visor, docs } = usePostList(getPost)
     const { user } = useUserContext()
 
     return (

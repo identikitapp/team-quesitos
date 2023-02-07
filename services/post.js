@@ -1,7 +1,6 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const createPost = async (content, image, token)=> {
-
     let myHeaders = new Headers();
     myHeaders.append("auth-token", token);
     
@@ -19,7 +18,7 @@ export const createPost = async (content, image, token)=> {
     return await fetch(API_URL + "/post/create", requestOptions).then(response => response.json())
 }
 
-export const getPost = async (token, page)=> {
+export const getPost = async ({ token, page })=> {
     let myHeaders = new Headers();
     myHeaders.append("auth-token", token);
 
@@ -27,12 +26,26 @@ export const getPost = async (token, page)=> {
         headers: myHeaders
     };
     
-    return await fetch(API_URL + "/post/get/" + page, requestOptions).then(response => response.json())
+    return await fetch(API_URL + `/post/get/${page}`, requestOptions).then(response => response.json())
+}
+
+export const getUserPost = async ({ token, userId, page })=> {
+    if (userId) {
+        let myHeaders = new Headers();
+        myHeaders.append("auth-token", token);
+
+        let requestOptions = {
+            headers: myHeaders
+        };
+        
+        return await fetch(API_URL + `/post/get/user/${userId}/${page}`, requestOptions).then(response => response.json())
+    } else {
+        return { data: [], total: 0 }
+    }
 }
 
 export const likePost = async (postId, token) => {
     let myHeaders = new Headers();
-    console.log(myHeaders)
     myHeaders.append("auth-token", token);
     myHeaders.append("content-type", "application/json")
 
