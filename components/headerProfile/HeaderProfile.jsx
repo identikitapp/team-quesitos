@@ -7,7 +7,7 @@ const HeaderProfile = () => {
 	const {user} = useUserContext()
 
 	let names = user.name ? (user.lastname ? user.name + " " + user.lastname : user.name) : (user.lastname ? user.lastname : "")
-	let userImage = user.image ? user.image : "/assets/profile.png"
+	let userImage = user.image ? user.image : "/assets/usuarioProfile.svg"
 
 	return (
 		<div className="headerContainer">

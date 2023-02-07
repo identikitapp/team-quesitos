@@ -1,6 +1,6 @@
-import NavbarMobile from "../../../components/navbar/NavbarMobile"
 
-describe('Pruebas del componente NavbarMobile', () => { 
-   test('prueba', () => {
+
+   test('debe de mostar el componente renderizado', () => {
+     
+    
       })
- })
