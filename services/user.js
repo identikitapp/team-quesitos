@@ -36,7 +36,5 @@ export const userLogin = async (username, password) => {
 }
 
 export const getUser = async ()=> {
-    let userData;
-    await fetch("/api/user").then(res => res.json()).then(res => userData = res ).catch(error => userData = { promiseError: error });
-    return userData;
+    return await fetch("/api/user").then(response => response.json())
 }

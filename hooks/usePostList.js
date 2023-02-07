@@ -22,7 +22,6 @@ const usePostList = (service, userId) => {
     useEffect(()=> {
         if (docs.length > 0) {
             if (docs.length < total) {
-                console.log('Cambio a página ' + (page + 1))
                 setPage(page => page + 1)
             }
         }
