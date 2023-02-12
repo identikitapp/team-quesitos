@@ -39,9 +39,16 @@ div.publicationContainer {
                     font-size: 1.1rem;
                 }
     
-                span.username {
+                a.username {
                     font-weight: bold;
                     transform: translateY(1px);
+                    text-decoration: none;
+                    color: #333;
+                    cursor: pointer;
+                }
+
+                a.username:hover {
+                    text-decoration: underline;
                 }
     
                 span.date {

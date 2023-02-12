@@ -35,6 +35,13 @@ export const userLogin = async (username, password) => {
     return userData;
 }
 
-export const getUser = async ()=> {
-    return await fetch("/api/user").then(response => response.json())
+export const getUser = async (token, userId)=> {
+    let myHeaders = new Headers();
+    myHeaders.append("auth-token", token);
+
+    let requestOptions = {
+        headers: myHeaders
+    };
+    
+    return await fetch(API_URL + `/user/get/${userId}`, requestOptions).then(res => res.json())
 }

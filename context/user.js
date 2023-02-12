@@ -1,5 +1,5 @@
+import { getSession } from 'next-auth/react';
 import { createContext, useContext, useEffect, useState } from 'react';
-import { getUser } from '../services/user';
 
 const UserContext = createContext();
 
@@ -9,7 +9,11 @@ export function UserProvider({ children }) {
 
 	useEffect(()=> {
 		const unsub = ()=> {
-			getUser().then(res => { if (!res.error) setUser(res) })
+			getSession().then(res => {
+				if (res) {
+					setUser(res.user)
+				}
+			})
 		}
 		return unsub();
 	}, [update])

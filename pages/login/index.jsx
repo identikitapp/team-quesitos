@@ -4,7 +4,6 @@ import Image from "next/image"
 import Loader from "../../components/Loader"
 
 const Login = () => {
-
     const [seePassword, setSeePassword] = useState(false)
     const { error, loader, formType, onSetFormTypeHandler, onRegisterHandler, onAuthHandler } = useLogin({ setSeePassword })
 

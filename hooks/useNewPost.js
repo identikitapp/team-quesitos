@@ -1,11 +1,13 @@
+import { getSession } from "next-auth/react"
 import { useState } from "react"
+import { useUserContext } from "../context/user"
 import { createPost } from "../services/post"
-import { getToken } from "../utilities/getToken"
 
 const useNewPost = (update, setUpdate) => {
 	const [length, setLength] = useState(0) 
 	const [error, setError] = useState({ error: null })
 	const [loader, setLoader] = useState(false)
+	const { user } = useUserContext()
 	
 	const clearAll = (ev) => {
 		ev.target[0].files = null
@@ -16,9 +18,9 @@ const useNewPost = (update, setUpdate) => {
 		setLoader(false);
 	}
 
-	const onSubmitHandler = (ev)=> {
+	const onSubmitHandler = async (ev)=> {
 		ev.preventDefault()
-		let [token, content, image] = [getToken(), ev.target[1].value, ev.target[0].files[0]]
+		const [content, image] = [ev.target[1].value, ev.target[0].files[0]]
 		
         if (content || image) {
 			if (image && (image.size / 1024 / 1024) > 3) {
@@ -27,7 +29,7 @@ const useNewPost = (update, setUpdate) => {
 				return setError({ error: true, message: 'El contenido no puede tener mas de 200 caracteres.' })
 			}
 			setLoader(true)
-			createPost(content, image, token).then(res => {
+			createPost(content, image, user.token).then(res => {
 				if (res.error) {
 					setLoader(false)
 					return setError({ error: true, message: res.message ? res.message : res.error })

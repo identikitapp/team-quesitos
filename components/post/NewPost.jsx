@@ -2,11 +2,15 @@ import { useRef } from "react"
 import useNewPost from "../../hooks/useNewPost"
 import Loader from "../Loader"
 import Image from "next/image"
-import { useUserContext } from "../../context/user"
 
 const NewPost = ({ update, setUpdate }) => {
+	const user = {
+		username: "",
+		name: "",
+		lastname: "",
+		image: ""
+	}
 	
-	const { user } = useUserContext()
 	const { error, loader, length, setLength, onSubmitHandler } = useNewPost(update, setUpdate)
 	const inputFileRef = useRef()
 

@@ -1,5 +1,6 @@
+import { getSession } from "next-auth/react"
 import { useEffect, useRef, useState } from "react"
-import { getToken } from "../utilities/getToken"
+import { useUserContext } from "../context/user"
 
 const usePostList = (service, userId) => {
     const [page, setPage] = useState(0)
@@ -7,6 +8,7 @@ const usePostList = (service, userId) => {
     const [docs, setDocs] = useState([])
     const [update, setUpdate] = useState(false)
     const [updatePage, setUpdatePage] = useState(0)
+    const { user } = useUserContext()
     const visor = useRef()
 
     // Funcion que ejecuta el observer
@@ -45,13 +47,15 @@ const usePostList = (service, userId) => {
     // Este useEffect trae los primeros posteos al inicio y se vuelve a ejecutar en caso de hacer un nuevo posteo
     // Eso es para mostrar el nuevo posteo del usuario despues de que lo haga
     useEffect(()=> {
-        const token = getToken()
         const unsub = ()=> {
-            service({ token, userId: userId ? userId : "", page: 0 }).then(res => {
-                setDocs(res.data)
-                setTotal(res.total)
-                setPage(0)
-            }).catch(err => console.log(err))
+            getSession().then(session => {
+                const token = session.user.token
+                service({ token, userId: userId ? userId : "", page: 0 }).then(res => {
+                    setDocs(res.data)
+                    setTotal(res.total)
+                    setPage(0)
+                }).catch(err => console.log(err))
+            })
         }
         return unsub()
     }, [update, userId])
@@ -60,7 +64,7 @@ const usePostList = (service, userId) => {
     // La primer condicion es para evitar re-render con el useEffect anterior y para evitar una doble peticion al inicio
     useEffect(()=> {
         if (page !== 0 && docs.length > 0) {
-            const token = getToken()
+            const token = user.token
             const unsub = ()=> {
                 service({ token, userId: userId ? userId : "", page }).then(res => {
                     setDocs([...docs, ...res.data])

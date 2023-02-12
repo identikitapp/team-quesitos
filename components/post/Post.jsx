@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { likePost } from '../../services/post';
 import { formatDifTime } from '../../utilities/times';
 import Image from 'next/image';
-import { getToken } from '../../utilities/getToken';
+import { getSession } from 'next-auth/react';
+import Link from 'next/link';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -22,17 +23,17 @@ const Post = ({ data, userId }) => {
 		setOpen(!open)
 	}
 
-	const onLikeHandler = ()=> {
+	const onLikeHandler = async ()=> {
 		if (!loading) {
 			setLoading(true)
-			let token = getToken()
+			const { user } = await getSession()
 			if (!like) {
 				setCountLikes(countLikes => countLikes + 1)
 			} else {
 				setCountLikes(countLikes => countLikes - 1)
 			}
 			setLike(!like)
-			likePost(data._id, token)
+			likePost(data._id, user.token)
 				.then(res => setLoading(false))
 				.catch(error => {
 					console.log(error)
@@ -48,7 +49,7 @@ const Post = ({ data, userId }) => {
 					<Image width='50' height='50' src={profileImage} alt="Usuario"/>
 					<div className='info' >
 						{names && <span className="names">{names}</span>}
-						<span style={usernameStyles} className="username">{data.owner.username}</span>
+						<Link href={`/perfil/${data.owner.id}`} style={usernameStyles} className="username">{data.owner.username}</Link>
 						<span className='date'>{time}</span>
 					</div>
 					<div className="menuContainer">
