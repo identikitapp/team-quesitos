@@ -22,6 +22,7 @@ const authOptions = {
 			}
 		})
 	],
+	secret: process.env.NEXTAUTH_SECRET,
 	callbacks: {
 		async session({ session, token }) {
 			session.user = token.user;

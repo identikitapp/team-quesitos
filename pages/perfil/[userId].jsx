@@ -26,7 +26,7 @@ const Profile = () => {
     
     useEffect(()=> {
         if (router.asPath !== router.route) {
-            let unsub = ()=> {
+            const unsub = ()=> {
                 getSession().then(session => {
                     getUser(session.user.token, router.query.userId).then(res => {
                         setUserData(res.data)            

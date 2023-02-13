@@ -1,14 +1,14 @@
-import { getSession } from "next-auth/react"
 import { useState } from "react"
 import { useUserContext } from "../context/user"
 import { createPost } from "../services/post"
 
 const useNewPost = (update, setUpdate) => {
+	const { user } = useUserContext()
 	const [length, setLength] = useState(0) 
 	const [error, setError] = useState({ error: null })
 	const [loader, setLoader] = useState(false)
-	const { user } = useUserContext()
 	
+	// Limpiar el formulario, errores y carga
 	const clearAll = (ev) => {
 		ev.target[0].files = null
 		ev.target[0].value = ''
@@ -22,6 +22,7 @@ const useNewPost = (update, setUpdate) => {
 		ev.preventDefault()
 		const [content, image] = [ev.target[1].value, ev.target[0].files[0]]
 		
+		// Validaciones
         if (content || image) {
 			if (image && (image.size / 1024 / 1024) > 3) {
 				return setError({ error: true, message: 'La imagen es muy grande (máximo 3Mb).' })

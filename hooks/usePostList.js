@@ -1,8 +1,10 @@
 import { getSession } from "next-auth/react"
+import { useRouter } from "next/router"
 import { useEffect, useRef, useState } from "react"
 import { useUserContext } from "../context/user"
 
 const usePostList = (service, userId) => {
+    const router = useRouter()
     const [page, setPage] = useState(0)
     const [total, setTotal] = useState(null)
     const [docs, setDocs] = useState([])
@@ -51,6 +53,7 @@ const usePostList = (service, userId) => {
             getSession().then(session => {
                 const token = session.user.token
                 service({ token, userId: userId ? userId : "", page: 0 }).then(res => {
+                    if (res.error) return router.push("/perfil")
                     setDocs(res.data)
                     setTotal(res.total)
                     setPage(0)

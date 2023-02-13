@@ -3,13 +3,14 @@ import useNewPost from "../../hooks/useNewPost"
 import Loader from "../Loader"
 import Image from "next/image"
 
+const user = {
+	username: "",
+	name: "",
+	lastname: "",
+	image: ""
+}
+
 const NewPost = ({ update, setUpdate }) => {
-	const user = {
-		username: "",
-		name: "",
-		lastname: "",
-		image: ""
-	}
 	
 	const { error, loader, length, setLength, onSubmitHandler } = useNewPost(update, setUpdate)
 	const inputFileRef = useRef()

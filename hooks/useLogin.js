@@ -17,10 +17,10 @@ const useLogin = ({ setSeePassword }) => {
     // Registro
     const onRegisterHandler = async (ev)=> {
         ev.preventDefault()
-        let [username, email, password, confirmPassword] = [ev.target[0].value.toLowerCase(), ev.target[1].value.toLowerCase(), ev.target[2].value, ev.target[3].value]
+        const [username, email, password, confirmPassword] = [ev.target[0].value.toLowerCase(), ev.target[1].value.toLowerCase(), ev.target[2].value, ev.target[3].value]
         
         // Validaciones
-        let validate = validateRegister(username, email, password, confirmPassword)
+        const validate = validateRegister(username, email, password, confirmPassword)
         if (validate.error) return setError(validate)
         
         // Registro
@@ -28,8 +28,12 @@ const useLogin = ({ setSeePassword }) => {
         const user = await userRegister(username, email, password, confirmPassword);
         setLoader(false)
 
-        if (user.error) return setError({ error: true, message: user.message })
-        else if (user.promiseError) return setError({ error: true, message: 'Ocurrio un error, intente de nuevo mas tarde.' })
+        if (user.error) {
+            return setError({ error: true, message: user.message })
+        }
+        else if (user.promiseError) {
+            return setError({ error: true, message: 'Ocurrio un error, intente de nuevo mas tarde.' })
+        }
         setFormType(false)
         return setError({ error: false })
     }
@@ -37,13 +41,11 @@ const useLogin = ({ setSeePassword }) => {
     // Login
     const onAuthHandler = async (ev)=> {
         ev.preventDefault()
-        let [username, password] = [ev.target[0].value.toLowerCase(), ev.target[1].value.toLowerCase()]
+        const [username, password] = [ev.target[0].value.toLowerCase(), ev.target[1].value.toLowerCase()]
+        
+        // Inicio de sesión
         setLoader(true)
-        signIn('credentials', {
-            username,
-            password,
-            redirect: false
-        }).then(res => {
+        signIn('credentials', { username, password, redirect: false }).then(res => {
             setLoader(false)
             if (res.ok) {
                 setUpdate(!update)
@@ -52,8 +54,9 @@ const useLogin = ({ setSeePassword }) => {
                 setError({ error: true, message: "El usuario o contraseña no son válidos." })
             }
         }).catch(error => {
-            setError({ error: true, message: "Ocurrio un error, intente de nuevo mas tarde." })
+            console.log(error)
             setLoader(false)
+            setError({ error: true, message: "Ocurrio un error, intente de nuevo mas tarde." })
         })
     }
 
