@@ -22,6 +22,11 @@ const nextConfig = {
         destination: '/perfil', // Matched parameters can be used in the destination
         permanent: true,
       },
+      {
+        source: '/post/:path/:path*',
+        destination: '/feed', // Matched parameters can be used in the destination
+        permanent: true,
+      }
     ]
   },
 }

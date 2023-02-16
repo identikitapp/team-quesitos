@@ -4,10 +4,14 @@ import { formatDifTime } from '../../utilities/times';
 import Image from 'next/image';
 import { getSession } from 'next-auth/react';
 import Link from 'next/link';
+import { usePostContext } from '../../context/post';
+import { useRouter } from 'next/router';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
 const Post = ({ data, userId }) => {
+	const { setPost } = usePostContext()
+	const router = useRouter()
 	const [open, setOpen] = useState(false);
 	const [like, setLike] = useState(data.likes.includes(userId))
 	const [countLikes, setCountLikes] = useState(data.likes.length)
@@ -29,17 +33,26 @@ const Post = ({ data, userId }) => {
 			const { user } = await getSession()
 			if (!like) {
 				setCountLikes(countLikes => countLikes + 1)
-			} else {
+				data.likes.push(userId)
+			}
+			else {
 				setCountLikes(countLikes => countLikes - 1)
+				const indexId = data.likes.indexOf(userId)
+				data.likes.splice(indexId, 1)
 			}
 			setLike(!like)
-			likePost(data._id, user.token)
-				.then(res => setLoading(false))
-				.catch(error => {
-					console.log(error)
-					setLoading(false)
-				})
+			likePost(data._id, user.token).then(res => {
+				setLoading(false)
+			}).catch(error => {
+				console.log(error)
+				setLoading(false)
+			})
 		}
+	}
+
+	const onSeePostHandler = ()=> {
+		setPost(data)
+		return router.push("/post")
 	}
 
 	return (
@@ -70,7 +83,7 @@ const Post = ({ data, userId }) => {
 					{countLikes}
 				</div>
 				<div>
-					<Image width='30' height='30' src="/assets/post/comment.png" alt='Comentar' />
+					<Image width='30' height='30' src="/assets/post/comment.png" alt='Comentar' onClick={onSeePostHandler} />
 					{data.commentsQuantity}
 				</div>
 			</div>
