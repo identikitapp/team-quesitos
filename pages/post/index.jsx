@@ -2,12 +2,70 @@ import { getSession } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
+import Comment from "../../components/post/Comment"
 import { usePostContext } from "../../context/post"
 import { useUserContext } from "../../context/user"
 import { likePost } from "../../services/post"
 import { formatDifTime } from "../../utilities/times"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
+
+const commentsData = [
+    {
+        owner: {
+            id: "",
+            username: "Nombre de usuario",
+            image: ""
+        },
+        content: "Contenido",
+        createdAt: "2023-01-28T04:01:26"
+    },
+    {
+        owner: {
+            id: "",
+            username: "Nombre de usuario",
+            image: ""
+        },
+        content: "Contenido",
+        createdAt: "2023-01-28T04:01:26"
+    },
+    {
+        owner: {
+            id: "",
+            username: "Nombre de usuario",
+            image: ""
+        },
+        content: "Contenido",
+        createdAt: "2023-01-28T04:01:26"
+    },
+    {
+        owner: {
+            id: "",
+            username: "Nombre de usuario",
+            image: ""
+        },
+        content: "Contenido",
+        createdAt: "2023-01-28T04:01:26"
+    },
+    {
+        owner: {
+            id: "",
+            username: "Nombre de usuario",
+            image: ""
+        },
+        content: "Contenido",
+        createdAt: "2023-01-28T04:01:26"
+    },
+    {
+        owner: {
+            id: "",
+            username: "Nombre de usuario",
+            image: ""
+        },
+        content: "Contenido",
+        createdAt: "2023-01-28T04:01:26"
+    }
+]
 
 const PostPage = () => {
     const { post } = usePostContext()
@@ -71,6 +129,12 @@ const PostPage = () => {
                     <Image width='30' height='30' src={isLike} alt='Me gusta' onDoubleClick={(ev) => ev.preventDefault()} onClick={onLikeHandler} />
                     <span>{likesMessage}</span>
                 </div>
+            </div>
+            <div className="comments">
+                <h4>Comentarios</h4>
+                {commentsData.map((comment, index) => {
+                    return <Comment key={index} data={comment} />
+                })}
             </div>
         </div>
     )
