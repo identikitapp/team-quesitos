@@ -1,7 +1,8 @@
 import { getSession } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
-import { useState } from "react"
+import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
 import Comment from "../../components/post/Comment"
 import { usePostContext } from "../../context/post"
 import { useUserContext } from "../../context/user"
@@ -70,10 +71,17 @@ const commentsData = [
 const PostPage = () => {
     const { post } = usePostContext()
     const { user } = useUserContext()
+    const router = useRouter()
 	const [open, setOpen] = useState(false);
 	const [countLikes, setCountLikes] = useState(post.likes.length)
     const [like, setLike] = useState(post.likes.includes(user.id))
 	const [loading, setLoading] = useState(false)
+
+    useEffect(()=> {
+        if (!post.owner.id) {
+            router.push("/feed")
+        }
+    }, [])
 
 	let names = post.owner.name ? (post.owner.lastname ? post.owner.name + " " + post.owner.lastname : post.owner.name) : (post.owner.lastname ? post.owner.lastname : "")
 	let profileImage = post.owner.image ? (API_URL + post.owner.image) : "/assets/profile.png"
@@ -102,7 +110,7 @@ const PostPage = () => {
 		}
 	}
 
-    return (
+    if (post.owner.id) return (
         <div id="postPage">
             <div className="publicationContainer">
                 <div className="square">
@@ -129,13 +137,17 @@ const PostPage = () => {
                     <Image width='30' height='30' src={isLike} alt='Me gusta' onDoubleClick={(ev) => ev.preventDefault()} onClick={onLikeHandler} />
                     <span>{likesMessage}</span>
                 </div>
+                <h4>Comentarios</h4>
             </div>
             <div className="comments">
-                <h4>Comentarios</h4>
                 {commentsData.map((comment, index) => {
                     return <Comment key={index} data={comment} />
                 })}
             </div>
+            <form className="comment">
+                <Image width='40' height='40' src={profileImage} alt="Usuario"/>
+                <input type="text" name="content" placeholder="Escribe un comentario..." maxLength='200' required />
+            </form>
         </div>
     )
 }
