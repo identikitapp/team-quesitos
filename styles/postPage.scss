@@ -3,14 +3,14 @@
 div#postPage {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: min-content auto min-content;
+    grid-template-rows: min-content min-content;
     justify-items: center;
-    height: 100vh;
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+    position: relative;
 
     div.publicationContainer {
 
@@ -73,7 +73,7 @@ div#postPage {
         width: 90%;
         gap: 1rem;
         height: 100%;
-        overflow-y: auto;
+        padding-bottom: calc(67px + 1rem);
 
         div.comment {
             display: flex;
@@ -146,9 +146,19 @@ div#postPage {
         align-items: center;
         gap: 1rem;
         width: 90%;
-        padding: 0.8rem 0;
-        border-top: 1px solid #333;
-        margin-top: 1rem;
+        padding: 1.8rem 0 0.8rem 0;
+        position: fixed;
+        bottom: 0;
+        background-color: #fff;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 1rem;
+            height: 1px;
+            width: 100%;
+            background-color: #333;
+        }
 
         img {
             object-fit: contain;
@@ -163,6 +173,7 @@ div#postPage {
             background-color: #D7D7D7;
             font-size: 1rem;
             font-style: italic;
+            color: #666;
         }
     }
 }

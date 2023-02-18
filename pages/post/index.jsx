@@ -6,20 +6,20 @@ import { useEffect, useState } from "react"
 import Comment from "../../components/post/Comment"
 import { usePostContext } from "../../context/post"
 import { useUserContext } from "../../context/user"
-import { likePost } from "../../services/post"
+import { commentPost, likePost } from "../../services/post"
 import { formatDifTime } from "../../utilities/times"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
-const commentsData = [
+let commentsData = [
     {
         owner: {
             id: "",
             username: "Nombre de usuario",
             image: ""
         },
-        content: "Contenido",
-        createdAt: "2023-01-28T04:01:26"
+        comment: "Contenido",
+        date: "2023-01-28T04:01:26"
     },
     {
         owner: {
@@ -27,8 +27,8 @@ const commentsData = [
             username: "Nombre de usuario",
             image: ""
         },
-        content: "Contenido",
-        createdAt: "2023-01-28T04:01:26"
+        comment: "Contenido",
+        date: "2023-01-28T04:01:26"
     },
     {
         owner: {
@@ -36,8 +36,8 @@ const commentsData = [
             username: "Nombre de usuario",
             image: ""
         },
-        content: "Contenido",
-        createdAt: "2023-01-28T04:01:26"
+        comment: "Contenido",
+        date: "2023-01-28T04:01:26"
     },
     {
         owner: {
@@ -45,26 +45,8 @@ const commentsData = [
             username: "Nombre de usuario",
             image: ""
         },
-        content: "Contenido",
-        createdAt: "2023-01-28T04:01:26"
-    },
-    {
-        owner: {
-            id: "",
-            username: "Nombre de usuario",
-            image: ""
-        },
-        content: "Contenido",
-        createdAt: "2023-01-28T04:01:26"
-    },
-    {
-        owner: {
-            id: "",
-            username: "Nombre de usuario",
-            image: ""
-        },
-        content: "Contenido",
-        createdAt: "2023-01-28T04:01:26"
+        comment: "Contenido",
+        date: "2023-01-28T04:01:26"
     }
 ]
 
@@ -76,6 +58,7 @@ const PostPage = () => {
 	const [countLikes, setCountLikes] = useState(post.likes.length)
     const [like, setLike] = useState(post.likes.includes(user.id))
 	const [loading, setLoading] = useState(false)
+    const [comments, setComments] = useState(post.comments)
 
     useEffect(()=> {
         if (!post.owner.id) {
@@ -110,6 +93,19 @@ const PostPage = () => {
 		}
 	}
 
+    const onCommentHandler = (ev)=> {
+        ev.preventDefault()
+        const [postId, comment, token] = [post._id, ev.target[0].value, user.token]
+        if (comment.length < 201) {
+            commentPost(postId, comment, token).then(res => {
+                ev.target[0].value = ""
+                setComments([ res.data, ...comments ])
+            }).catch(err => {
+                console.log(err)
+            })
+        }
+    }
+
     if (post.owner.id) return (
         <div id="postPage">
             <div className="publicationContainer">
@@ -140,11 +136,11 @@ const PostPage = () => {
                 <h4>Comentarios</h4>
             </div>
             <div className="comments">
-                {commentsData.map((comment, index) => {
+                {comments.map((comment, index) => {
                     return <Comment key={index} data={comment} />
                 })}
             </div>
-            <form className="comment">
+            <form onSubmit={onCommentHandler} className="comment">
                 <Image width='40' height='40' src={profileImage} alt="Usuario"/>
                 <input type="text" name="content" placeholder="Escribe un comentario..." maxLength='200' required />
             </form>

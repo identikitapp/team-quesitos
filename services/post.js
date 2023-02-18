@@ -1,14 +1,14 @@
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const createPost = async (content, image, token)=> {
-    let myHeaders = new Headers();
+    const myHeaders = new Headers();
     myHeaders.append("auth-token", token);
     
-    let formdata = new FormData(); 
+    const formdata = new FormData(); 
     formdata.append("content", content);
     if (image) formdata.append("image", image);
 
-    let requestOptions = {
+    const requestOptions = {
         method: 'POST',
         headers: myHeaders,
         body: formdata,
@@ -19,10 +19,10 @@ export const createPost = async (content, image, token)=> {
 }
 
 export const getPost = async ({ token, page })=> {
-    let myHeaders = new Headers();
+    const myHeaders = new Headers();
     myHeaders.append("auth-token", token);
 
-    let requestOptions = {
+    const requestOptions = {
         headers: myHeaders
     };
     
@@ -31,10 +31,10 @@ export const getPost = async ({ token, page })=> {
 
 export const getUserPost = async ({ token, userId, page })=> {
     if (userId) {
-        let myHeaders = new Headers();
+        const myHeaders = new Headers();
         myHeaders.append("auth-token", token);
 
-        let requestOptions = {
+        const requestOptions = {
             headers: myHeaders
         };
         
@@ -45,11 +45,11 @@ export const getUserPost = async ({ token, userId, page })=> {
 }
 
 export const likePost = async (postId, token) => {
-    let myHeaders = new Headers();
+    const myHeaders = new Headers();
     myHeaders.append("auth-token", token);
     myHeaders.append("content-type", "application/json")
 
-    let options = {
+    const options = {
         method: 'POST',
         headers: myHeaders,
         body: JSON.stringify({
@@ -58,4 +58,21 @@ export const likePost = async (postId, token) => {
     };
     
     return await fetch(API_URL + '/post/like', options).then(response => response.json())
+}
+
+export const commentPost = async (postId, comment, token) => {
+    const myHeaders = new Headers();
+    myHeaders.append("auth-token", token);
+    myHeaders.append("content-type", "application/json")
+
+    const options = {
+        method: 'POST',
+        headers: myHeaders,
+        body: JSON.stringify({
+            id: postId,
+            comment
+        })
+    };
+    
+    return await fetch(API_URL + '/post/comment', options).then(response => response.json())
 }

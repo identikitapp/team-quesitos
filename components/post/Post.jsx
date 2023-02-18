@@ -84,7 +84,7 @@ const Post = ({ data, userId }) => {
 				</div>
 				<div>
 					<Image width='30' height='30' src="/assets/post/comment.png" alt='Comentar' onClick={onSeePostHandler} />
-					{data.commentsQuantity}
+					{data.comments.length}
 				</div>
 			</div>
 		</div>
