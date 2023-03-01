@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { useUserContext } from "../context/user"
-import { createPost } from "../services/post"
+import { useUserContext } from "context/user"
+import { createPost } from "services/post"
 
 const useNewPost = (update, setUpdate) => {
 	const { user } = useUserContext()

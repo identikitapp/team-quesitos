@@ -1,8 +1,4 @@
-@import "./mixins";
-
-$primary-color: #d34646;
-$secondary-color: #ac4949c0;
-$text-color: #b12e2ec4;
+@import "./variables";
 
 * {
     box-sizing: border-box;  

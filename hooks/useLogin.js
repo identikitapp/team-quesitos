@@ -1,9 +1,9 @@
 import { useState } from "react"
-import { validateRegister } from '../utilities/validations'
-import { userRegister } from "../services/user"
+import { validateRegister } from 'utilities/validations'
+import { userRegister } from "services/user"
 import { signIn } from "next-auth/react"
 import { useRouter } from "next/router"
-import { useUserContext } from "../context/user"
+import { useUserContext } from "context/user"
 
 const useLogin = ({ setSeePassword }) => {
 

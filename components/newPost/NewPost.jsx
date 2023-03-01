@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import useNewPost from "../../hooks/useNewPost"
+import useNewPost from "hooks/useNewPost"
 import Loader from "../Loader"
 import Image from "next/image"
 import styles from "./newPost.module.scss";

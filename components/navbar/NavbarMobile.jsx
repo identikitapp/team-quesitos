@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useUserContext } from '../../context/user';
+import { useUserContext } from 'context/user';
 import styles from "./navbarMobile.module.scss";
 
 const NavbarMobile = () => {

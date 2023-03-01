@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { likePost } from '../../services/post';
-import { formatDifTime } from '../../utilities/times';
+import { likePost } from 'services/post';
+import { formatDifTime } from 'utilities/times';
 import Image from 'next/image';
 import { getSession } from 'next-auth/react';
 import Link from 'next/link';
-import { usePostContext } from '../../context/post';
+import { usePostContext } from 'context/post';
 import { useRouter } from 'next/router';
 import styles from "./post.module.scss";
 

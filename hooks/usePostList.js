@@ -1,7 +1,7 @@
 import { getSession } from "next-auth/react"
 import { useRouter } from "next/router"
 import { useEffect, useRef, useState } from "react"
-import { useUserContext } from "../context/user"
+import { useUserContext } from "context/user"
 
 const usePostList = (service, userId) => {
     const router = useRouter()

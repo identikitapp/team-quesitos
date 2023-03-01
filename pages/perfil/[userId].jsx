@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react"
 import { getSession } from "next-auth/react"
 import { useRouter } from 'next/router'
-import usePostList from "../../hooks/usePostList"
-import { getUserPost } from "../../services/post"
-import { getUser } from "../../services/user"
-import HeaderProfile from "../../components/headerProfile/HeaderProfile"
-import Post from "../../components/post/Post"
-import Navbar from "../../components/navbar/Navbar"
-import { useUserContext } from "../../context/user"
+import usePostList from "hooks/usePostList"
+import { getUserPost } from "services/post"
+import { getUser } from "services/user"
+import HeaderProfile from "components/headerProfile/HeaderProfile"
+import Post from "components/post/Post"
+import Navbar from "components/navbar/Navbar"
+import { useUserContext } from "context/user"
 
 const initialState = {
     id: "",

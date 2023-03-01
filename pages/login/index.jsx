@@ -1,7 +1,7 @@
 import { useState } from "react";
-import useLogin from "../../hooks/useLogin";
+import useLogin from "hooks/useLogin";
 import Image from "next/image";
-import Loader from "../../components/Loader";
+import Loader from "components/Loader";
 import styles from "./login.module.scss";
 
 const Login = () => {

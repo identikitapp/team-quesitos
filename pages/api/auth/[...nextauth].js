@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
-import { userLogin } from "../../../services/user"
+import { userLogin } from "services/user"
 
 const authOptions = {
 	pages: {

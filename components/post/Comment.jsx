@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { formatDifTime } from "../../utilities/times"
+import { formatDifTime } from "utilities/times"
 
 const Comment = ({ data }) => {
     

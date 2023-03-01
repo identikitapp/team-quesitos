@@ -1,9 +1,9 @@
-import usePostList from "../../hooks/usePostList"
-import { getUserPost } from "../../services/post"
-import HeaderProfile from "../../components/headerProfile/HeaderProfile"
-import Post from "../../components/post/Post"
-import Navbar from "../../components/navbar/Navbar"
-import { useUserContext } from "../../context/user"
+import usePostList from "hooks/usePostList"
+import { getUserPost } from "services/post"
+import HeaderProfile from "components/headerProfile/HeaderProfile"
+import Post from "components/post/Post"
+import Navbar from "components/navbar/Navbar"
+import { useUserContext } from "context/user"
 
 const Profile = () => {
 
