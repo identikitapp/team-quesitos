@@ -1,11 +1,10 @@
-import NavbarMobile from './NavbarMobile'
-//import NavbarDesktop from './NavbarDesktop'
+import NavbarMobile from './NavbarMobile';
+import styles from "./navbar.module.scss";
 
 const Navbar = () => {
 	return (
-		<div className="navbarContainer">
+		<div className={styles.navbarContainer}>
 			<NavbarMobile />
-      		{/* <NavbarDesktop /> */}
 		</div>	
 	)
 }

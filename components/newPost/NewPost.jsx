@@ -2,6 +2,7 @@ import { useRef } from "react"
 import useNewPost from "../../hooks/useNewPost"
 import Loader from "../Loader"
 import Image from "next/image"
+import styles from "./newPost.module.scss";
 
 const user = {
 	username: "",
@@ -19,7 +20,7 @@ const NewPost = ({ update, setUpdate }) => {
 	const userImage = user.image ? user.image : "/assets/profile.png"
 
 	return (
-		<form onSubmit={(ev)=> onSubmitHandler(ev)} className="newPostForm">
+		<form onSubmit={(ev)=> onSubmitHandler(ev)} className={styles.newPostForm}>
 			<h2>Haz una publicación</h2>
 			{error.error && <span className="error">{error.message}</span>}
 			<input ref={inputFileRef} style={{display: "none"}} type="file" name="image" accept="image/*" />

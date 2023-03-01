@@ -1,7 +1,8 @@
-import { useState } from "react"
-import useLogin from "../../hooks/useLogin"
-import Image from "next/image"
-import Loader from "../../components/Loader"
+import { useState } from "react";
+import useLogin from "../../hooks/useLogin";
+import Image from "next/image";
+import Loader from "../../components/Loader";
+import styles from "./login.module.scss";
 
 const Login = () => {
     const [seePassword, setSeePassword] = useState(false)
@@ -26,7 +27,7 @@ const Login = () => {
     }
 
     return (
-        <div className="loginContainer">
+        <div className={styles.loginContainer}>
             <div className="background"></div>
             <form onSubmit={(ev)=> formType ? onRegisterHandler(ev) : onAuthHandler(ev)}>
                 <Image style={logoStyle} priority className="logo" width={96} height={96} src="/assets/logo.svg" alt="Active Moments" />

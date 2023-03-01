@@ -1,0 +1,21 @@
+div.navbarMobile {
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    justify-items: center;
+    align-items: center;
+    background-color: #FFF0F0;
+    padding: 0.2rem 0.8rem;
+
+    a {
+        display: flex;
+    }
+
+    img {
+        object-fit: contain;
+        aspect-ratio: 1/1;
+    }
+
+    img[class=logoUser] {
+        border-radius: 50%;
+    }
+}

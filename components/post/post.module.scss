@@ -6,7 +6,7 @@ div.publicationContainer {
     position: relative;
     padding-top: 1rem;
 
-    div.square {
+    div[class=square] {
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -16,7 +16,7 @@ div.publicationContainer {
         border-radius: 8px;
         border-bottom-left-radius: 4px;
 
-        div.user {
+        div[class=user] {
             display: grid;
             grid-template-columns: min-content auto min-content;
             align-items: flex-start;
@@ -29,17 +29,17 @@ div.publicationContainer {
                 border-radius: 50%;
             }
     
-            div.info {
+            div[class=info] {
                 display: flex;
                 flex-direction: column;
                 
-                span.names {
+                span[class=names] {
                     font-weight: bold;
                     text-transform: capitalize;
                     font-size: 1.1rem;
                 }
     
-                a.username {
+                a[class=username] {
                     font-weight: bold;
                     transform: translateY(1px);
                     text-decoration: none;
@@ -47,11 +47,11 @@ div.publicationContainer {
                     cursor: pointer;
                 }
 
-                a.username:hover {
+                a[class=username]:hover {
                     text-decoration: underline;
                 }
     
-                span.date {
+                span[class=date] {
                     text-transform: lowercase;
                     opacity: 0.6;
                     transform: translateY(4px);
@@ -59,11 +59,11 @@ div.publicationContainer {
                 }
             }
     
-            div.menuContainer {
+            div[class=menuContainer] {
                 position: relative;
                 z-index: 2;
 
-                img.menu {
+                img[class=menu] {
                     cursor: pointer;
                 }
 
@@ -79,7 +79,7 @@ div.publicationContainer {
                     }
                 }
 
-                div.menu {
+                div[class=menu] {
                     position: absolute;
                     display: flex;
                     flex-direction: column;
@@ -90,7 +90,7 @@ div.publicationContainer {
                     border-radius: 4px;
                     animation: showMenu 150ms ease-in;
 
-                    div.arrow {
+                    div[class=arrow] {
                         background-color: #e4e4e4;
                         width: 14px;
                         height: 10px;
@@ -131,7 +131,7 @@ div.publicationContainer {
             z-index: 1;
         }
     
-        img.publication {
+        img[class=publication] {
             width: 100%;
             height: auto;
             border-radius: 6px;
@@ -140,7 +140,7 @@ div.publicationContainer {
         }
     }
     
-    div.actions {
+    div[class=actions] {
         display: grid;
         grid-template-columns: min-content min-content;
         gap: 1rem;

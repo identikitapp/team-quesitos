@@ -1,3 +1,5 @@
+@import "@/pages/variables";
+
 form.newPostForm {
     display: grid;
     grid-template-columns: 1fr;
@@ -19,7 +21,7 @@ form.newPostForm {
         }
     }
 
-    span.error {
+    span[class=error] {
         color: $primary-color;
         background-color: rgba(255, 0, 0, 0.178);
         border: 1px solid rgba(255, 0, 0, 0.342);
@@ -35,7 +37,7 @@ form.newPostForm {
         animation-fill-mode: forwards;
     }
 
-    div.textarea {
+    div[class=textarea] {
         position: relative;
         display: flex;
         
@@ -63,7 +65,7 @@ form.newPostForm {
         }
     }
 
-    div.buttons {
+    div[class=buttons] {
         display: grid;
         grid-template-columns: auto min-content min-content;
         gap: 0.6rem;

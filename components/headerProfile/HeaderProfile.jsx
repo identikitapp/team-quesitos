@@ -1,6 +1,7 @@
-import Image from 'next/image'
-import Post from '../post/Post'
-import PropTypes from 'prop-types'
+import Image from 'next/image';
+import Post from '../post/Post';
+import PropTypes from 'prop-types';
+import styles from "./headerProfile.module.scss";
 
 const HeaderProfile = ({ user }) => {
 	if (user) {
@@ -8,7 +9,7 @@ const HeaderProfile = ({ user }) => {
 		const userImage = user.image ? user.image : "/assets/usuarioProfile.svg"
 
 		return (
-			<div className="headerContainer">
+			<div className={styles.headerContainer}>
 				<div className="headerImage">
 					<Image width={78} height={78} alt={user.username} src={userImage} className='userImage' priority />
 				</div>

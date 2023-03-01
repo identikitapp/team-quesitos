@@ -6,6 +6,7 @@ import { getSession } from 'next-auth/react';
 import Link from 'next/link';
 import { usePostContext } from '../../context/post';
 import { useRouter } from 'next/router';
+import styles from "./post.module.scss";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -56,7 +57,7 @@ const Post = ({ data, userId }) => {
 	}
 
 	return (
-		<div className="publicationContainer">
+		<div className={styles.publicationContainer}>
 			<div className="square">
 				<div className="user">
 					<Image width='50' height='50' src={profileImage} alt="Usuario"/>

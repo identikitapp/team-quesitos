@@ -8,6 +8,7 @@ import { usePostContext } from "../../context/post"
 import { useUserContext } from "../../context/user"
 import { commentPost, likePost } from "../../services/post"
 import { formatDifTime } from "../../utilities/times"
+import styles from "./post.module.scss"
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -107,7 +108,7 @@ const PostPage = () => {
     }
 
     if (post.owner.id) return (
-        <div id="postPage">
+        <div className={styles.postPage}>
             <div className="publicationContainer">
                 <div className="square">
                     <div className="user">

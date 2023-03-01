@@ -1,3 +1,6 @@
+@import "@/pages/variables";
+@import "@/pages/mixins";
+
 // Contenedor del login
 div.loginContainer {
     display: grid;
@@ -14,13 +17,13 @@ div.loginContainer {
     background-size: cover;
     overflow: hidden;    
     
-    div.background {
+    div[class=background] {
         position: fixed;
         left: 0;
         right: 0;
         top: 0;
         bottom: 0;
-        background-image: url(../public/assets/login/background.webp);
+        background-image: url(../../public/assets/login/background.webp);
         opacity: 0.025;
         z-index: 0;
     }
@@ -39,7 +42,7 @@ div.loginContainer {
         transform: translateY(-0.2rem);
         // background-image: radial-gradient(circle at 50% 50%, #ffffff 0, rgb(250, 250, 250) 100%);
         
-        img.logo {
+        img[class=logo] {
             justify-self: center;
             width: 90px;
         }
@@ -94,7 +97,7 @@ div.loginContainer {
             }
         }
         
-        label.password {
+        label[class=password] {
             grid-template-columns: 30px auto 30px;
             position: relative;
             
@@ -114,7 +117,7 @@ div.loginContainer {
                 transition: opacity 50ms linear;
                 cursor: pointer;
     
-                div.bar {
+                div[class=bar] {
                     position: absolute;
                     width: 100%;
                     height: 2px;
@@ -123,10 +126,10 @@ div.loginContainer {
                 }
             }
 
-            div.check {
+            div[class=check] {
                 opacity: 1;
 
-                div.bar {
+                div[class=bar] {
                     opacity: 0;
                 }
             }
@@ -147,11 +150,11 @@ div.loginContainer {
             }
         }
 
-        button.bottom {
+        button[class=bottom] {
             margin-top: 3rem;
         }
 
-        img.bottom {
+        img[class=bottom] {
             margin-bottom: 1rem;
         }
 
